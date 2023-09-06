@@ -4,5 +4,8 @@
   // airbnb 규칙 추가
   "airbnb",
   "airbnb/hooks",
-  "airbnb-typescript"]
+  "airbnb-typescript",
+  // prettier
+  "prettier"
+]
 }
