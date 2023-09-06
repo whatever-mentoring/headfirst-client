@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "lint:fix": "eslint ./**/*.{js,jsx,ts,tsx} --cache --fix",
+    "prepare": "husky install",
+    "postinstall": "husky install"
   },
   "dependencies": {
     "@types/node": "20.5.9",
@@ -26,6 +29,14 @@
   "devDependencies": {
     "@types/prettier": "^3",
     "eslint-config-prettier": "^9.0.0",
+    "husky": ">=7",
+    "lint-staged": ">=10",
     "prettier": "^3.0.3"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+  ]
   }
 }
