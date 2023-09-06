@@ -1,3 +1,8 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+  "next/core-web-vitals", 
+  // airbnb 규칙 추가
+  "airbnb",
+  "airbnb/hooks",
+  "airbnb-typescript"]
 }
