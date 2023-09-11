@@ -12,16 +12,22 @@
     "postinstall": "husky install"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.35.0",
     "@types/node": "20.5.9",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
+    "antd-mobile": "^5.32.2",
     "autoprefixer": "10.4.15",
+    "axios": "^1.5.0",
+    "cookies-next": "^3.0.0",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "ky": "^1.0.1",
     "next": "13.4.19",
     "postcss": "8.4.29",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "swiper": "latest",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2"
   },
@@ -37,6 +43,6 @@
     "*.{ts,tsx}": [
       "eslint --fix",
       "prettier --write"
-  ]
+    ]
   }
 }
