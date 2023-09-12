@@ -14,6 +14,11 @@ export default class MyDocument extends Document {
               src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
               crossOrigin="anonymous"
             ></script>
+            <script
+              type="text/javascript"
+              src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&libraries=services&autoload=false`}
+              async
+            />
           </body>
         </Head>
       </Html>
