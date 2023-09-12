@@ -12,11 +12,19 @@ const page: NextPage = () => {
     <>
       <Header />
       <div className="flex">
-        <Image src={Icon} alt="addressPinIcon"></Image>
-        <div className="flex">
-          <div>서초타운트라팰리스아파트</div>
-          <div>아파트</div>
-          <div>서울 서초구 서초대로 74길 23 (서초동)</div>
+        <Image
+          className="w-[27px] h-[33px] ml-[27px] mt-[21px] mr-[18px]"
+          src={Icon}
+          alt="addressPinIcon"
+        ></Image>
+        <div className="flex-inline">
+          <div className="flex">
+            <div className="mt-[17px]">서초타운트라팰리스아파트</div>
+            <p className="mt-[23px] ml-[4px] text-xs text-createStorySubAddress">아파트</p>
+          </div>
+          <div className="text-sm text-createStorySubAddress">
+            서울 서초구 서초대로 74길 23 (서초동)
+          </div>
         </div>
       </div>
       <CreateStoryContent />

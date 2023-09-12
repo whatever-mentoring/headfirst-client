@@ -9,11 +9,11 @@ const Header: NextPage = () => {
     <>
       <div className="flex bg-bg w-[360px] h-[100px]">
         <Image
-          className="w-[24px] h-[24px] ml-[30px] mt-[37px]"
+          className="w-[24px] h-[24px] ml-[29px] mt-[42px]"
           src={arrow_back}
           alt="backButton"
         ></Image>
-        <div className="text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[89px] mt-[42px]">
+        <div className="text-lg text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[72px] mt-[42px]">
           사연 작성하기
         </div>
       </div>
