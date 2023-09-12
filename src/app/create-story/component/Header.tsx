@@ -21,7 +21,7 @@ const Header: NextPage = () => {
           ></Image>
         </button>
 
-        <div className="text-lg text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[72px] mt-[42px]">
+        <div className="text-lg text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[101px] mt-[42px]">
           사연 작성하기
         </div>
       </div>
