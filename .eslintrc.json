@@ -1,10 +1,11 @@
 {
-  "root": true, 
+  "root": true,
   "parser": "@typescript-eslint/parser",
-  "env": { // 전역객체를 eslint가 인식하는 구간
-  "browser": true, // document나 window 인식되게 함
-  "node": true,
-  "es6": true
+  "env": {
+    // 전역객체를 eslint가 인식하는 구간
+    "browser": true, // document나 window 인식되게 함
+    "node": true,
+    "es6": true
   },
   "ignorePatterns": ["node_modules/"], // eslint 미적용될 폴더나 파일 명시
   "plugins": ["@typescript-eslint", "prettier"],
@@ -16,6 +17,7 @@
   "rules": {
     "react/react-in-jsx-scope": "off", // react 17부턴 import 안해도돼서 기능 끔
     // 경고표시, 파일 확장자를 .ts나 .tsx 모두 허용함
-    "no-useless-catch": "off" // 불필요한 catch 못쓰게 하는 기능 끔
+    "no-useless-catch": "off", // 불필요한 catch 못쓰게 하는 기능 끔
+    "@typescript-eslint/no-explicit-any": "off" // Unexpected any. Specify a different type 문구 제거
   }
 }
