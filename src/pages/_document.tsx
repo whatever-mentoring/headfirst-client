@@ -16,7 +16,7 @@ export default class MyDocument extends Document {
             ></script>
             <script
               type="text/javascript"
-              src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_KEY}&libraries=services&autoload=false`}
+              src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_APP_JS_KEY}&libraries=services&autoload=false`}
               async
             />
           </body>
