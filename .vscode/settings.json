@@ -9,7 +9,8 @@
   // prettier
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true,
+    "source.fixAll.eslint": true
   },
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "prettier.prettierPath": ".yarn/sdks/prettier/index.js"
 }
