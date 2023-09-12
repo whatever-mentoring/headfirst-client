@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+body {
+  min-height: 100vh;
+  min-height: fill-available;
+}
+
+/* Swiper pagination 색상 */
+
+/* .swiper {
+  width: 100%;
+  height: 100%;
+  white-space: pre-wrap;
+} */
+
+.swiper {
+  width: 288px;
+  height: 480px;
+  margin-top: 100px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide {
+  width: 288px;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* background-color: aquamarine; */
+}
+
+.swiper .swiper-pagination {
+  position: absolute;
+  /* bottom: 50px; */
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+}
+
+.swiper-button-prev {
+  display: none;
+}
+
+.swiper-button-next {
+  background: url(/assets/onboarding-arrow.svg) no-repeat;
+  background-position: center;
+  width: 41px;
+  height: 41px;
+}
+
+.swiper-pagination-bullet {
+  background: #d9d9d9 !important;
+}
+.swiper-pagination-bullet-active {
+  background: #EF6262 !important;
+}
+
+/* .swiper-pagination {
+  top: calc(var(--vh, 1vh) * 75) !important;
+
+  @media (min-height: 1080px) {
+    top: calc(var(--vh, 1vh) * 60) !important;
+  }
+} */
