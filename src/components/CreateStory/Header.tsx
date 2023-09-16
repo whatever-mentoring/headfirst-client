@@ -12,16 +12,16 @@ const Header: NextPage = () => {
 
   return (
     <>
-      <div className="flex bg-bg w-[360px] h-[100px]">
+      <div className="flex bg-bg w-[360px] h-[80px]">
         <button className="w-[24px] h-[24px]" onClick={() => router.back()}>
           <Image
-            className="w-[24px] h-[24px] ml-[29px] mt-[42px]"
+            className="w-[24px] h-[24px] ml-[29px] mt-[32px]"
             src={arrow_back}
             alt="backButton"
           ></Image>
         </button>
 
-        <div className="text-lg text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[101px] mt-[42px]">
+        <div className="text-lg text-white text-[18px] font-[StoryFont] w-[109px] h-[25px] ml-[101px] mt-[32px]">
           사연 작성하기
         </div>
       </div>
