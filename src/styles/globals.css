@@ -14,6 +14,12 @@ body {
   min-height: fill-available;
 }
 
+/* ===== createStory font ====== */
+@font-face {
+  font-family: 'SCDream6';
+  src: url('../../public/fonts/SCDream6.otf');
+}
+
 /* Swiper pagination 색상 */
 
 /* .swiper {
@@ -68,7 +74,7 @@ body {
   background: #d9d9d9 !important;
 }
 .swiper-pagination-bullet-active {
-  background: #EF6262 !important;
+  background: #ef6262 !important;
 }
 
 /* .swiper-pagination {
