@@ -34,7 +34,7 @@ export default function SearchBar() {
           onChange={onChange}
           value={InputText}
           onFocus={() => setInputText('')}
-          className="w-[283px] h-[48px] placeholder:text-[#1D1E1F] rounded-[8px] bg-[#EEEEEE] border-none bg-no-repeat bg-[12px] bg-[url('/assets/search.svg')] pl-[40px] ml-[16px] outline-none"
+          className="placeholder:text-[#A9A9A9] w-[283px] h-[48px] placeholder:text-[#1D1E1F] rounded-[8px] bg-[#EEEEEE] border-none bg-no-repeat bg-[12px] bg-[url('/assets/search.svg')] pl-[40px] ml-[16px] outline-none"
         />
       </div>
     </div>
