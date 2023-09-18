@@ -1,4 +1,4 @@
-import SearchMap from '@/components/SearchMap';
+// import SearchMap from '@/components/SearchMap';
 import SearchBar from '@/components/SearchBar';
 
 const Search = () => {
@@ -6,7 +6,7 @@ const Search = () => {
     <div className="flex h-screen items-center justify-center bg-red-200">
       <div className="flex w-[360px] h-screen mx-auto bg-white">
         <SearchBar />
-        <SearchMap />
+        {/* <SearchMap /> */}
       </div>
     </div>
   );
