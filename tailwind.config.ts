@@ -13,6 +13,8 @@ const config: Config = {
         createStoryBtn: '#F34E4E',
         createStoryContentBg: '#F6F6F6',
         createStoryModalFont: '#535353',
+        allCreateStoryContentFont: '#8E8E8E',
+        allCreateStoryContentDate: '#878B93',
       },
       fontFamily: {
         StoryFont: ['SCDream6'],
