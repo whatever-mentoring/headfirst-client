@@ -7,8 +7,6 @@ import arrow_back from '../../../public/assets/arrow_back.svg';
 
 const Header: NextPage = () => {
   const router = useRouter();
-  console.log(router);
-  // const allCreateStoryTitle = '전체 사연';
 
   return (
     <>
