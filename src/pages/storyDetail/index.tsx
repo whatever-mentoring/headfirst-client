@@ -4,6 +4,7 @@ import type { NextPage } from 'next';
 import Header from '@/components/StoryDetail/Header';
 import Address from '@/components/CreateStory/Address';
 import StoryDetailContent from '@/components/StoryDetail/StoryDetailContent';
+import Content from '@/components/StoryDetail/Content';
 
 const StoryDetail: NextPage = () => {
   return (
@@ -12,6 +13,7 @@ const StoryDetail: NextPage = () => {
         <Header />
         <Address />
         <StoryDetailContent />
+        <Content />
       </div>
     </div>
   );
