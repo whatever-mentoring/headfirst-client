@@ -17,13 +17,15 @@ const StoryDetailContent: NextPage = () => {
           <div className="text-base font-bold font-[StoryDetailFont] w-[212px] h-[21px] pt-[31px] text-[#242424] ml-[29px] ">
             <text>닉네임 1</text>
             <text className="text-storyDetailNickname"> 님의 이야기</text>
+
             <p className="mt-[-49px] ml-[6px] ml-[128px]">
               <Image
-                className="mt-[25px] w-[24px] h-[24px] ml-[111px]"
+                className="mt-[25px] w-[24px] h-[24px] ml-[229.2px]"
                 src={storyDetailOptionBtn}
                 alt="storyDetailOptionBtn"
               ></Image>
             </p>
+
             <div className="mt-[32px] font-[StoryFont]">사연 1의 제목이 들어갑니다</div>
           </div>
 
