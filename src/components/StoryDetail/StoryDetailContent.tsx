@@ -13,7 +13,7 @@ const StoryDetailContent: NextPage = () => {
   return (
     <>
       <div className="">
-        <div className="w-[303px] h-[428px] shadow-2xl mt-[12px] ml-[30px] rounded-[18.18px]">
+        <div className="w-[303px] h-[428px] shadow-2xl mt-[12px] ml-[30px] rounded-[18.18px] ">
           <div className="text-base font-bold font-[StoryDetailFont] w-[212px] h-[21px] pt-[31px] text-[#242424] ml-[29px] ">
             <text>닉네임 1</text>
             <text className="text-storyDetailNickname"> 님의 이야기</text>
