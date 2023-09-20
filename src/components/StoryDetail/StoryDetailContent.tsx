@@ -19,7 +19,7 @@ const StoryDetailContent: NextPage = () => {
             <text className="text-storyDetailNickname"> 님의 이야기</text>
             <p className="mt-[-49px] ml-[6px] ml-[128px]">
               <Image
-                className="mt-[25px] w-[24px] h-[24px]"
+                className="mt-[25px] w-[24px] h-[24px] ml-[111px]"
                 src={storyDetailOptionBtn}
                 alt="storyDetailOptionBtn"
               ></Image>

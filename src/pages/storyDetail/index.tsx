@@ -7,13 +7,13 @@ import StoryDetailContent from '@/components/StoryDetail/StoryDetailContent';
 
 const StoryDetail: NextPage = () => {
   return (
-    <>
-      <div className="ml-[40%]">
+    <div>
+      <div className="ml-[40%] w-[360px] h-[1024px]">
         <Header />
         <Address />
         <StoryDetailContent />
       </div>
-    </>
+    </div>
   );
 };
 
