@@ -5,19 +5,18 @@ import { useRouter } from 'next/router';
 const AllCreateStoryContent: NextPage = () => {
   const router = useRouter;
   console.log(router);
+
   return (
     <>
-      <div className="">
-        <div className="w-[303px] h-[481px] shadow-2xl mt-[12px] ml-[30px] rounded-[18.18px]">
-          <div className="w-[212px] h-[21px] pt-[41px] font-[StoryFont] text-[#242424] ml-[29px] ">
-            <input type="text" placeholder="제목을 입력해 주세요" />
+      <div>
+        <div className="border-t w-[360px] mt-[15px]"></div>
+        <div className="mt-[19px] border-b w-[360px]">
+          <div className="font-StoryFont ml-[22px]">사연 1의 제목이 들어갑니다.</div>
+          <div className="text-allCreateStoryContentFont mt-[11px] ml-[22px]">
+            내용이 들어갑니다.
           </div>
-
-          <div className="bg-createStoryContentBg w-[254px] h-[359px] mt-[48px] ml-[24px] text-createStoryContentColor pl-[20px] pt-[24px] rounded-[8px]">
-            <textarea
-              className="bg-createStoryContentBg w-[212px] h-[312px]"
-              placeholder="내용을 입력해 주세요"
-            />
+          <div className="mt-[21px] text-allCreateStoryContentDate text-xs ml-[276px] mb-[13px]">
+            09/06 23:01
           </div>
         </div>
       </div>
