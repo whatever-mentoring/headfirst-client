@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const createStoryModal = atom({
-  key: 'createStoryModal',
-  default: 'false',
+export const createStoryModalState = atom<string | boolean>({
+  key: 'createStoryModalState',
+  default: false,
 });

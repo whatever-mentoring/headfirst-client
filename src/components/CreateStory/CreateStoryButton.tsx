@@ -1,18 +1,19 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
 import CreateStoryModal from './createStoryModal';
-import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { createStoryModalState } from '@/states/createStoryState';
 
+// createStoryModal
 // import CreateStoryModal from './createStoryModal';
 
 const CreateStoryButton: NextPage = () => {
-  const [modal, setModal] = useState(false);
-  const router = useRouter;
+  const [modal, setModal] = useRecoilState(createStoryModalState);
 
   const modalHandle = () => {
-    console.log(modal);
     setModal(true);
-    console.log(router);
+    console.log(modal);
+
+    // router.push('/main');
   };
 
   return (
