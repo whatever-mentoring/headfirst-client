@@ -1,15 +1,24 @@
 import type { NextPage } from 'next';
 import CreateStoryModal from './createStoryModal';
 import { useRecoilState } from 'recoil';
-import { createStoryModalState } from '@/states/createStoryState';
+import { createStoryModalState, timeState } from '@/states/createStoryState';
 import axios from 'axios';
 
 const CreateStoryButton: NextPage = () => {
   const [modal, setModal] = useRecoilState(createStoryModalState);
+  const [time, setTime] = useRecoilState(timeState);
 
   const modalHandle = async () => {
     setModal(true);
-    console.log(modal);
+    const now = new Date();
+    const mm = now.getMonth() + 1;
+    const dd = now.getDate();
+    const hh = now.getHours();
+    const min = now.getMinutes();
+    const date = mm + '/' + dd + ' ' + hh + ':' + min;
+    console.log(date);
+    setTime(date);
+    console.log(time);
 
     const requestData = {
       title: '친구들과의 추억',

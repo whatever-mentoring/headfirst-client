@@ -2,13 +2,14 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
-import { inputValueState, textareaValueState } from '@/states/createStoryState';
+import { inputValueState, textareaValueState, timeState } from '@/states/createStoryState';
 
 const AllCreateStoryContent: NextPage = () => {
   const router = useRouter();
 
   const inputValue = useRecoilValue(inputValueState);
   const textareaValue = useRecoilValue(textareaValueState);
+  const time = useRecoilValue(timeState);
 
   return (
     <>
@@ -21,7 +22,7 @@ const AllCreateStoryContent: NextPage = () => {
           <div className="font-StoryFont ml-[22px]">{inputValue}</div>
           <div className="text-allCreateStoryContentFont mt-[11px] ml-[22px]">{textareaValue}</div>
           <div className="mt-[21px] text-allCreateStoryContentDate text-xs ml-[276px] mb-[13px]">
-            09/06 23:01
+            {time}
           </div>
         </div>
       </div>

@@ -19,3 +19,8 @@ export const heartCountState = atom({
   key: 'heartCountState',
   default: 0,
 });
+
+export const timeState = atom({
+  key: 'timeState',
+  default: '',
+});
