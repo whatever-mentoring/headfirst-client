@@ -1,12 +1,10 @@
-// import SearchMap from '@/components/SearchMap';
-import SearchBar from '@/components/SearchBar';
+import SearchContainer from '@/components/SearchContainer';
 
 const Search = () => {
   return (
     <div className="flex h-screen items-center justify-center bg-red-200">
-      <div className="flex w-[360px] h-screen mx-auto bg-white">
-        <SearchBar />
-        {/* <SearchMap /> */}
+      <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
+        <SearchContainer />
       </div>
     </div>
   );
