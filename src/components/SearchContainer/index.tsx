@@ -3,6 +3,8 @@ import { Place } from '@/data/types';
 import SearchItem from '../SearchItem';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useRecoilState } from 'recoil';
+import { SearchAtom } from '../../recoil/SearchAtom';
 
 const SearchContainer = () => {
   const [places, setPlaces] = useState<Place[]>([]);
@@ -66,6 +68,14 @@ const SearchContainer = () => {
     setCurrentPage(page);
   };
 
+  const [selectedPlaceName, setSelectedPlaceName] = useRecoilState<string>(SearchAtom);
+  console.log('검색한 장소 이름 : ', selectedPlaceName);
+
+  const handleSearchItemClick = (placeName: string) => {
+    setSelectedPlaceName(placeName);
+    console.log('클릭 완료');
+  };
+
   return (
     <div>
       <div className="h-[80px] mb-[10px] flex items-center justify-center">
@@ -95,7 +105,14 @@ const SearchContainer = () => {
       <ul>
         {getCurrentPageResults().map((place, index) => (
           <li key={index}>
-            <SearchItem place_name={place.place_name} address_name={place.address_name} />
+            <SearchItem
+              place_name={place.place_name}
+              address_name={place.address_name}
+              onClick={() => {
+                handleSearchItemClick(place.place_name);
+                router.push('/main');
+              }}
+            />
           </li>
         ))}
       </ul>

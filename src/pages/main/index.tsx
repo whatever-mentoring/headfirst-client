@@ -31,7 +31,7 @@ const Main: NextPage = () => {
   };
 
   // SignInModal
-  const [isSignInModalVisible, setIsSignInModalVisible] = useState(true);
+  const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
 
   // const openAddStoryModal = () => {
   //   setIsAddStoryModalVisible(true);
