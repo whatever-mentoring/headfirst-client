@@ -14,3 +14,8 @@ export const textareaValueState = atom({
   key: 'textareaValueState',
   default: '',
 });
+
+export const heartCountState = atom({
+  key: 'heartCountState',
+  default: 0,
+});

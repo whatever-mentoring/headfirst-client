@@ -1,8 +1,9 @@
 'use client';
 
 import type { NextPage } from 'next';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { inputValueState, textareaValueState } from '@/states/createStoryState';
+import { heartCountState } from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailHeart from '@/../public/assets/storyDetailHeart.svg';
@@ -11,6 +12,8 @@ import storyDetailOptionBtn from '@/../public/assets/storyDetailOptionBtn.svg';
 const StoryDetailContent: NextPage = () => {
   const inputValue = useRecoilValue(inputValueState);
   const textareaValue = useRecoilValue(textareaValueState);
+
+  const [heartCount, setHearCount] = useRecoilState(heartCountState);
 
   return (
     <>
@@ -41,8 +44,11 @@ const StoryDetailContent: NextPage = () => {
               src={storyDetailHeart}
               alt="storyDetailHeart"
             ></Image>
-            <div className="font-normal text-[11.86px] w-[8px] h-[13px] ml-[5.56px] mt-[7.12px]">
-              6
+            <div
+              className="font-normal text-[11.86px] w-[8px] h-[13px] ml-[5.56px] mt-[7.12px]"
+              onClick={() => setHearCount(heartCount + 1)}
+            >
+              {heartCount}
             </div>
           </div>
         </div>
