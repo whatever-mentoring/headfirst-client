@@ -19,6 +19,11 @@ body {
   font-family: 'SCDream6';
   src: url('../../public/fonts/SCDream6.otf');
 }
+/* ===== storyDetail font ====== */
+@font-face {
+  font-family: 'Pretendard-Bold';
+  src: url('../../public/fonts/Pretendard-Bold.otf');
+}
 
 /* Swiper pagination 색상 */
 

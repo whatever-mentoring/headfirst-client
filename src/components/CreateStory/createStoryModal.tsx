@@ -13,6 +13,7 @@ const CreateStoryModal: NextPage = () => {
             className="mt-[14.95px] ml-[256.95px]"
             src={createStoryModalDone}
             alt="modalDone"
+            // onClick={() => router.push('/main')}
           ></Image>
           <div className="font-bold w-[113px] h-[24px] mt-[3.97px] ml-[91px] text-xl">
             사연 등록 완료
