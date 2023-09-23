@@ -1,8 +1,8 @@
 import { atom } from 'recoil';
 
-const SearchXAtom = atom<number[]>({
+const SearchXAtom = atom<number>({
   key: 'searchXState',
-  default: [],
+  default: 0,
 });
 
 export { SearchXAtom };
