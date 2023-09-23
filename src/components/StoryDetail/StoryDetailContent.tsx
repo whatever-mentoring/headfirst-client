@@ -1,15 +1,27 @@
 'use client';
 
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
+import StoryDeleteCheck from '@/components/StoryDetail/StoryDeleteCheck';
+
+import { useRecoilState, useRecoilValue } from 'recoil';
+import {
+  inputValueState,
+  textareaValueState,
+  heartCountState,
+  storyDeleteCheckState,
+} from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailHeart from '@/../public/assets/storyDetailHeart.svg';
 import storyDetailOptionBtn from '@/../public/assets/storyDetailOptionBtn.svg';
 
 const StoryDetailContent: NextPage = () => {
-  const router = useRouter();
-  console.log(router);
+  const inputValue = useRecoilValue(inputValueState);
+  const textareaValue = useRecoilValue(textareaValueState);
+
+  const [heartCount, setHearCount] = useRecoilState(heartCountState);
+  const [storyDeleteCheck, setStoryDeleteCheck] = useRecoilState(storyDeleteCheckState);
+  // const handleSotryDelete = () => {};
   return (
     <>
       <div className="">
@@ -20,17 +32,21 @@ const StoryDetailContent: NextPage = () => {
 
             <p className="mt-[-49px] ml-[6px] ml-[128px]">
               <Image
-                className="mt-[25px] w-[24px] h-[24px] ml-[229.2px]"
+                className="mt-[25px] w-[24px] h-[24px] ml-[229.2px] cursor-pointer	"
                 src={storyDetailOptionBtn}
                 alt="storyDetailOptionBtn"
+                onClick={() => {
+                  setStoryDeleteCheck(true);
+                  console.log(storyDeleteCheck);
+                }}
               ></Image>
             </p>
-
-            <div className="mt-[32px] font-[StoryFont]">사연 1의 제목이 들어갑니다</div>
+            <div className="mt-[32px] font-[StoryFont]">{inputValue}</div>
+            {storyDeleteCheck === true ? <StoryDeleteCheck /> : null}
           </div>
 
           <div className="text-allCreateStoryContentFont bg-createStoryContentBg w-[254px] h-[221px] mt-[119px] ml-[24px] text-createStoryContentColor pl-[20px] pt-[24px] rounded-[8px]">
-            사연의 내용이 들어갑니다
+            {textareaValue}
           </div>
 
           <div className="border-soid border-[1.5px] border-[#ECEDF0] mt-[9.64px] rounded-[16.68px] flex ml-[24px] w-[63px] h-[34.46px]">
@@ -39,8 +55,11 @@ const StoryDetailContent: NextPage = () => {
               src={storyDetailHeart}
               alt="storyDetailHeart"
             ></Image>
-            <div className="font-normal text-[11.86px] w-[8px] h-[13px] ml-[5.56px] mt-[7.12px]">
-              6
+            <div
+              className="font-normal text-[11.86px] w-[8px] h-[13px] ml-[5.56px] mt-[7.12px]"
+              onClick={() => setHearCount(heartCount + 1)}
+            >
+              {heartCount}
             </div>
           </div>
         </div>

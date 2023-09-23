@@ -1,18 +1,52 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
 import CreateStoryModal from './createStoryModal';
-import { useRouter } from 'next/router';
-
-// import CreateStoryModal from './createStoryModal';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { createStoryModalState, timeState } from '@/states/createStoryState';
+import { inputValueState, textareaValueState } from '@/states/createStoryState';
+import axios from 'axios';
 
 const CreateStoryButton: NextPage = () => {
-  const [modal, setModal] = useState(false);
-  const router = useRouter;
+  const [modal, setModal] = useRecoilState(createStoryModalState);
+  const inputValue = useRecoilValue(inputValueState);
+  const textareaValue = useRecoilValue(textareaValueState);
+  const setTime = useSetRecoilState(timeState);
 
-  const modalHandle = () => {
-    console.log(modal);
+  const modalHandle = async () => {
     setModal(true);
-    console.log(router);
+    const now = new Date();
+    const mm = ('0' + now.getMonth()).slice(-2);
+    const dd = ('0' + now.getDate()).slice(-2);
+    const hh = ('0' + now.getHours()).slice(-2);
+    const min = ('0' + now.getMinutes()).slice(-2);
+    const date = mm + '/' + dd + ' ' + hh + ':' + min;
+    setTime(date);
+
+    const requestData = {
+      title: inputValue,
+      content: textareaValue,
+      keyword: '강남역',
+      longitude: '36.123243522',
+      latitude: '125.32543211',
+    };
+
+    try {
+      // Axios를 사용하여 POST 요청을 보냅니다.
+      const response = await axios.post(
+        'http://api.headfirst.p-e.kr/api/story/register',
+        requestData,
+        {
+          headers: {
+            Authorization: 'Bearer 토큰값',
+          },
+        },
+      );
+
+      // 서버로부터의 응답을 처리합니다.
+      console.log('서버 응답:', response.data);
+    } catch (error) {
+      // 에러를 처리합니다.
+      console.error('에러:', error);
+    }
   };
 
   return (

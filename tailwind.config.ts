@@ -16,6 +16,7 @@ const config: Config = {
         allCreateStoryContentFont: '#8E8E8E',
         allCreateStoryContentDate: '#878B93',
         storyDetailNickname: '#B8B8B8',
+        createStorySubAddress: '#6F6F6F',
       },
       fontFamily: {
         StoryFont: ['SCDream6'],
