@@ -1,5 +1,8 @@
 import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk';
 import React, { useState, useEffect, useRef } from 'react';
+import { useRecoilValue } from 'recoil';
+import { SearchXAtom } from '@/recoil/SearchXAtom';
+import { SearchYAtom } from '@/recoil/SearchYAtom';
 
 interface KakaoMapProps {
   openNewStoryModal: () => void;
@@ -7,11 +10,13 @@ interface KakaoMapProps {
 }
 
 const KakaoMap: React.FC<KakaoMapProps> = ({ openNewStoryModal, openAddStoryModal }) => {
+  // const [map, setMap] = useState<null | kakao.maps.Map>(null);
+
   // 임시 마커 데이터
   const locations = [
     { title: '가천관', latlng: { lat: 37.45014238433003, lng: 127.12972934051282 } },
-    { title: '한국섬유산업연합회', latlng: { lat: 37.507728847503, lng: 127.06047332744 } },
-    { title: '호텔 페이토 삼성', latlng: { lat: 37.508424857062, lng: 127.05882843725 } },
+    { title: '올데이즈 커피', latlng: { lat: 37.44756362788988, lng: 127.12729516027275 } },
+    { title: 'AI 공학과', latlng: { lat: 37.4551613, lng: 127.1334068 } },
   ];
 
   // geolocation 현재 위치
@@ -21,10 +26,22 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ openNewStoryModal, openAddStoryModa
     navigator.geolocation.getCurrentPosition(successHandler, errorHandler); // 성공시 successHandler, 실패시 errorHandler 함수가 실행된다.
   }, []);
 
+  const placeX = useRecoilValue(SearchXAtom);
+  const placeY = useRecoilValue(SearchYAtom);
+  console.log('검색한 위치', placeX, placeY);
+
   const successHandler = (response: GeolocationPosition) => {
-    console.log(response);
+    console.log('현재 위치', response);
+    console.log('위도', response.coords.latitude);
     const { coords } = response; // coords 객체에서 추출
     setLocation(coords); // GeolocationCoordinates를 설정
+
+    // placeX와 placeY가 null이 아닌 경우에만 해당 위치로 이동
+    if (placeX !== null && placeY !== null) {
+      setCoordinates({ lat: placeX[0], lng: placeY[0] });
+    } else {
+      setCoordinates({ lat: coords.latitude, lng: coords.longitude });
+    }
   };
 
   const errorHandler = (error: GeolocationPositionError) => {
@@ -53,7 +70,7 @@ const KakaoMap: React.FC<KakaoMapProps> = ({ openNewStoryModal, openAddStoryModa
         <Map
           center={{ lat: location.latitude, lng: location.longitude }}
           style={{ width: '100%', height: '100%' }}
-          level={5}
+          level={4}
           ref={mapRef}
           onClick={getCoordinates}
         >

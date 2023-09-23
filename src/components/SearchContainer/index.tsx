@@ -5,6 +5,8 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useRecoilState } from 'recoil';
 import { SearchAtom } from '../../recoil/SearchAtom';
+import { SearchXAtom } from '@/recoil/SearchXAtom';
+import { SearchYAtom } from '@/recoil/SearchYAtom';
 
 const SearchContainer = () => {
   const [places, setPlaces] = useState<Place[]>([]);
@@ -69,10 +71,17 @@ const SearchContainer = () => {
   };
 
   const [selectedPlaceName, setSelectedPlaceName] = useRecoilState<string>(SearchAtom);
-  console.log('검색한 장소 이름 : ', selectedPlaceName);
+  const [selectedPlaceX, setSelectedPlaceX] = useRecoilState<number[]>(SearchXAtom);
+  const [selectedPlaceY, setSelectedPlaceY] = useRecoilState<number[]>(SearchYAtom);
 
-  const handleSearchItemClick = (placeName: string) => {
+  console.log('검색한 장소 이름 : ', selectedPlaceName);
+  console.log('검색한 장소 X 좌표 : ', selectedPlaceX);
+  console.log('검색한 장소 Y 좌표 : ', selectedPlaceY);
+
+  const handleSearchItemClick = (placeName: string, x: number, y: number) => {
     setSelectedPlaceName(placeName);
+    setSelectedPlaceX([x]);
+    setSelectedPlaceY([y]);
     console.log('클릭 완료');
   };
 
@@ -109,7 +118,8 @@ const SearchContainer = () => {
               place_name={place.place_name}
               address_name={place.address_name}
               onClick={() => {
-                handleSearchItemClick(place.place_name);
+                handleSearchItemClick(place.place_name, place.x, place.y);
+                // console.log(place);
                 router.push('/main');
               }}
             />
