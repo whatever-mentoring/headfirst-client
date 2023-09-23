@@ -5,13 +5,28 @@
  * 4. (현재 위치 클릭 시)현재 위치 불러오기
  * */
 
-import { Map } from 'react-kakao-maps-sdk';
+import { Map, MapMarker, CustomOverlayMap } from 'react-kakao-maps-sdk';
 import { useRecoilValue } from 'recoil';
 import { SearchXAtom } from '@/recoil/SearchXAtom';
 import { SearchYAtom } from '@/recoil/SearchYAtom';
 import { useState, useEffect } from 'react';
 
-export default function PracticeKakaoMap() {
+interface PracticeKakaoMapProps {
+  openNewStoryModal: () => void;
+  openAddStoryModal: () => void;
+}
+
+export default function PracticeKakaoMap({
+  openNewStoryModal,
+  openAddStoryModal,
+}: PracticeKakaoMapProps) {
+  // 임시 마커 데이터
+  const locations = [
+    { title: '가천관', latlng: { lat: 37.45014238433003, lng: 127.12972934051282 } },
+    { title: '올데이즈 커피', latlng: { lat: 37.44756362788988, lng: 127.12729516027275 } },
+    { title: 'AI 공학과', latlng: { lat: 37.4551613, lng: 127.1334068 } },
+  ];
+
   // 1. 임시 위치 불러오기 : 임시 위치 데이터
   const temporaryLocation = {
     title: '가천관',
@@ -49,7 +64,8 @@ export default function PracticeKakaoMap() {
 
   // 임시 위치, 현재 위치, 또는 검색 위치를 사용하여 중심 좌표 설정
   //   const center = searchLocation || userLocation || temporaryLocation.latlng;
-  const center = userLocation || temporaryLocation.latlng;
+  //   const center = userLocation || temporaryLocation.latlng;
+  const center = temporaryLocation.latlng;
 
   return (
     <Map // 지도를 표시할 Container
@@ -61,6 +77,31 @@ export default function PracticeKakaoMap() {
         height: '100%',
       }}
       level={3} // 지도의 확대 레벨
-    />
+    >
+      <CustomOverlayMap position={center}>
+        {locations.map((loc) => (
+          <MapMarker
+            key={`${loc.title}-${loc.latlng.lat}-${loc.latlng.lng}`}
+            position={loc.latlng}
+            image={{
+              src: '/assets/marker.svg',
+              size: { width: 50, height: 50 },
+            }}
+            title={loc.title}
+            onClick={openAddStoryModal}
+          />
+        ))}
+        {/* 현재 위치 좌표 */}
+        <MapMarker
+          position={center}
+          image={{
+            src: '/assets/current-marker.svg',
+            size: { width: 36, height: 44 },
+          }}
+          onClick={openNewStoryModal}
+          draggable={true}
+        />
+      </CustomOverlayMap>
+    </Map>
   );
 }
