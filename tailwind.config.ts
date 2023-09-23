@@ -21,6 +21,7 @@ const config: Config = {
       fontFamily: {
         StoryFont: ['SCDream6'],
         StoryDetailFont: ['Pretendard-Bold'],
+        StoryDeleteFont: ['SCDream4'],
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

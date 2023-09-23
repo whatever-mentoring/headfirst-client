@@ -36,7 +36,7 @@ const CreateStoryButton: NextPage = () => {
         requestData,
         {
           headers: {
-            Authorization: 'Bearer 토큰값',
+            Authorization: 'Bearer 1Nnv7XmmzaV7nfIOnrhuonwDbMeiVNg2jVgd_zqzCinI2gAAAYrBcG9f',
           },
         },
       );

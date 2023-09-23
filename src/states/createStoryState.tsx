@@ -44,3 +44,8 @@ export const storyDeleteCheckState = atom({
   key: 'storyDeleteCheckState',
   default: false,
 });
+
+export const storyDeleteModalState = atom({
+  key: 'storyDeleteModalState',
+  default: false,
+});

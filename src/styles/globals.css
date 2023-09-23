@@ -24,6 +24,10 @@ body {
   font-family: 'Pretendard-Bold';
   src: url('../../public/fonts/Pretendard-Bold.otf');
 }
+@font-face {
+  font-family: 'SCDream4';
+  src: url('../../public/fonts/SCDream4.otf');
+}
 
 /* Swiper pagination 색상 */
 
