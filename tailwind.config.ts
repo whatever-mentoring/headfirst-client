@@ -8,6 +8,19 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        bg: '#FF6D6D',
+        createStoryBtn: '#F34E4E',
+        createStoryContentBg: '#F6F6F6',
+        createStoryModalFont: '#535353',
+        allCreateStoryContentFont: '#8E8E8E',
+        allCreateStoryContentDate: '#878B93',
+        storyDetailNickname: '#B8B8B8',
+      },
+      fontFamily: {
+        StoryFont: ['SCDream6'],
+        StoryDetailFont: ['Pretendard-Bold'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
