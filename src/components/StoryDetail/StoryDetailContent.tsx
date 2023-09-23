@@ -1,9 +1,15 @@
 'use client';
 
 import type { NextPage } from 'next';
+import StoryDeleteCheck from '@/components/StoryDetail/StoryDeleteCheck';
+
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { inputValueState, textareaValueState } from '@/states/createStoryState';
-import { heartCountState } from '@/states/createStoryState';
+import {
+  inputValueState,
+  textareaValueState,
+  heartCountState,
+  storyDeleteCheckState,
+} from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailHeart from '@/../public/assets/storyDetailHeart.svg';
@@ -14,7 +20,8 @@ const StoryDetailContent: NextPage = () => {
   const textareaValue = useRecoilValue(textareaValueState);
 
   const [heartCount, setHearCount] = useRecoilState(heartCountState);
-
+  const [storyDeleteCheck, setStoryDeleteCheck] = useRecoilState(storyDeleteCheckState);
+  // const handleSotryDelete = () => {};
   return (
     <>
       <div className="">
@@ -25,13 +32,17 @@ const StoryDetailContent: NextPage = () => {
 
             <p className="mt-[-49px] ml-[6px] ml-[128px]">
               <Image
-                className="mt-[25px] w-[24px] h-[24px] ml-[229.2px]"
+                className="mt-[25px] w-[24px] h-[24px] ml-[229.2px] cursor-pointer	"
                 src={storyDetailOptionBtn}
                 alt="storyDetailOptionBtn"
+                onClick={() => {
+                  setStoryDeleteCheck(true);
+                  console.log(storyDeleteCheck);
+                }}
               ></Image>
             </p>
-
             <div className="mt-[32px] font-[StoryFont]">{inputValue}</div>
+            {storyDeleteCheck === true ? <StoryDeleteCheck /> : null}
           </div>
 
           <div className="text-allCreateStoryContentFont bg-createStoryContentBg w-[254px] h-[221px] mt-[119px] ml-[24px] text-createStoryContentColor pl-[20px] pt-[24px] rounded-[8px]">

@@ -1,11 +1,14 @@
 import type { NextPage } from 'next';
 import CreateStoryModal from './createStoryModal';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { createStoryModalState, timeState } from '@/states/createStoryState';
+import { inputValueState, textareaValueState } from '@/states/createStoryState';
 import axios from 'axios';
 
 const CreateStoryButton: NextPage = () => {
   const [modal, setModal] = useRecoilState(createStoryModalState);
+  const inputValue = useRecoilValue(inputValueState);
+  const textareaValue = useRecoilValue(textareaValueState);
   const setTime = useSetRecoilState(timeState);
 
   const modalHandle = async () => {
@@ -19,8 +22,8 @@ const CreateStoryButton: NextPage = () => {
     setTime(date);
 
     const requestData = {
-      title: '친구들과의 추억',
-      content: '철수 생일 파티 너무 재밌었음!',
+      title: inputValue,
+      content: textareaValue,
       keyword: '강남역',
       longitude: '36.123243522',
       latitude: '125.32543211',
@@ -31,6 +34,11 @@ const CreateStoryButton: NextPage = () => {
       const response = await axios.post(
         'http://api.headfirst.p-e.kr/api/story/register',
         requestData,
+        {
+          headers: {
+            Authorization: 'Bearer 토큰값',
+          },
+        },
       );
 
       // 서버로부터의 응답을 처리합니다.
