@@ -11,6 +11,8 @@ const Redirect = () => {
       data: { access_token },
     } = await getToken(code);
 
+    console.log('access_token', access_token);
+
     const { data } = await postLogin(access_token);
 
     setCookie('accessToken', data.accessToken);
