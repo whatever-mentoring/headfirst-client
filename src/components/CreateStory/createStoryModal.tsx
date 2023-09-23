@@ -4,16 +4,26 @@ import Image from 'next/image';
 import createStoryModal from '../../../public/assets/createStoryModal.svg';
 import createStoryModalDone from '../../../public/assets/createStoryModalDone.svg';
 
+import { createStoryModalState } from '@/states/createStoryState';
+import { useSetRecoilState } from 'recoil';
+import { useRouter } from 'next/router';
+
 const CreateStoryModal: NextPage = () => {
+  const setModal = useSetRecoilState(createStoryModalState);
+  const router = useRouter();
+
   return (
     <>
-      <div className="bg-yellow-100 w-[295px] h-[288px] rounded-2xl mt-[-500px] ml-[-21px] fixed text-center">
+      <div className="bg-slate-50 w-[295px] h-[288px] rounded-2xl mt-[-500px] ml-[-21px] fixed text-center">
         <div>
           <Image
-            className="mt-[14.95px] ml-[256.95px]"
+            className="mt-[14.95px] ml-[256.95px] cursor-pointer"
             src={createStoryModalDone}
             alt="modalDone"
-            // onClick={() => router.push('/main')}
+            onClick={() => {
+              setModal(false);
+              router.push('/allCreateStory');
+            }}
           ></Image>
           <div className="font-bold w-[113px] h-[24px] mt-[3.97px] ml-[91px] text-xl">
             사연 등록 완료
