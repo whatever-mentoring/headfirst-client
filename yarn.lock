@@ -19,7 +19,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0":
+"@babel/runtime@npm:^7.18.0, @babel/runtime@npm:^7.18.3, @babel/runtime@npm:^7.20.13, @babel/runtime@npm:^7.20.7, @babel/runtime@npm:^7.21.0, @babel/runtime@npm:^7.22.15":
   version: 7.22.15
   resolution: "@babel/runtime@npm:7.22.15"
   dependencies:
@@ -2583,6 +2583,7 @@ __metadata:
     prettier: ^3.0.3
     react: 18.2.0
     react-dom: 18.2.0
+    react-kakao-maps-sdk: ^1.1.21
     recoil: ^0.7.7
     swiper: ^10.2.0
     tailwindcss: 3.3.3
@@ -3149,6 +3150,13 @@ __metadata:
     object.assign: ^4.1.4
     object.values: ^1.1.6
   checksum: f4b05fa4d7b5234230c905cfa88d36dc8a58a6666975a3891429b1a8cdc8a140bca76c297225cb7a499fad25a2c052ac93934449a2c31a44fc9edd06c773780a
+  languageName: node
+  linkType: hard
+
+"kakao.maps.d.ts@npm:^0.1.39":
+  version: 0.1.39
+  resolution: "kakao.maps.d.ts@npm:0.1.39"
+  checksum: b89c3ee7d6e2e86b1f53fa43060097f7cfc11b5a1e6c3862ab0e4126aa17483c6642d24c2a67deaa1c36de3fb604ec3fc7c049e6e4ddb0689782b040fa341526
   languageName: node
   linkType: hard
 
@@ -4257,6 +4265,19 @@ __metadata:
   version: 18.2.0
   resolution: "react-is@npm:18.2.0"
   checksum: e72d0ba81b5922759e4aff17e0252bd29988f9642ed817f56b25a3e217e13eea8a7f2322af99a06edb779da12d5d636e9fda473d620df9a3da0df2a74141d53e
+  languageName: node
+  linkType: hard
+
+"react-kakao-maps-sdk@npm:^1.1.21":
+  version: 1.1.21
+  resolution: "react-kakao-maps-sdk@npm:1.1.21"
+  dependencies:
+    "@babel/runtime": ^7.22.15
+    kakao.maps.d.ts: ^0.1.39
+  peerDependencies:
+    react: ^16.8 || ^17 || ^18
+    react-dom: ^16.8 || ^17 || ^18
+  checksum: c30bd27f79c18da81a7083ba9b6e39ec1ee0bdfb8d1ae3890b96bf44bf77279a36e44f29ec652de89f97a6e4c1f32bfa3660d738f1b6f3eaf26e14d7c3241d20
   languageName: node
   linkType: hard
 
