@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { postLogin, getToken } from '../../api/login';
 import { setCookie } from 'cookies-next';
 
-const Redirect = () => {
+const Redirect = (): null => {
   const router = useRouter();
 
   const getAuth = async (code: string) => {
