@@ -6,8 +6,9 @@ export const getToken = (code: string) => {
   );
 };
 
-export const postLogin = (accessToken: string) => {
-  return baseAxios.post<{ accessToken: string }>('/auth/login', {
+export const postLogin = async (accessToken: string) => {
+  const { data } = await baseAxios.post<{ data: { access_token: string } }>('/auth/login', {
     token: accessToken,
   });
+  return data;
 };
