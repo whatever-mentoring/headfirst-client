@@ -120,7 +120,7 @@ const SearchContainer = () => {
               onClick={() => {
                 handleSearchItemClick(place.place_name, place.x, place.y);
                 console.log(place);
-                router.push('/practice');
+                router.push('/main');
               }}
             />
           </li>
