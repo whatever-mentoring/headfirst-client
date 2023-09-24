@@ -68,8 +68,8 @@ export default function PracticeKakaoMap({
 
   // 임시 위치, 현재 위치, 또는 검색 위치를 사용하여 중심 좌표 설정
   //   const center = searchLocation || userLocation || temporaryLocation.latlng;
-  //   const center = userLocation || temporaryLocation.latlng;
-  const center = temporaryLocation.latlng;
+  const center = userLocation || temporaryLocation.latlng;
+  // const center = temporaryLocation.latlng;
 
   // NewStory 마커
   const [markerPosition, setMarkerPosition] = useState(center);
@@ -81,6 +81,7 @@ export default function PracticeKakaoMap({
       lng: marker.getPosition().getLng(),
     };
     setMarkerPosition(newPosition);
+    console.log(markerPosition);
     setNewStoryMarkerPosition((prevPositions) => [...prevPositions, newPosition]);
     console.log('NewStory 마커 위치 :', newStoryMarkerPosition);
   };
@@ -125,7 +126,7 @@ export default function PracticeKakaoMap({
         ))}
         {/* NewStory 마커 */}
         <MapMarker
-          position={markerPosition}
+          position={center}
           image={{
             src: '/assets/current-marker.svg',
             size: { width: 36, height: 44 },
