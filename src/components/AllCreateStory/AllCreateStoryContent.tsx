@@ -2,23 +2,30 @@
 import type { NextPage } from 'next';
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
-import { inputValueState, textareaValueState, timeState } from '@/states/createStoryState';
+
+import { ResMemberId, timeState } from '@/states/createStoryState';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
+import { ResInputState, ResTextareaState } from '@/states/createStoryState';
+
 
 const AllCreateStoryContent: NextPage = () => {
   const router = useRouter();
 
-  const inputValue = useRecoilValue(inputValueState);
-  const textareaValue = useRecoilValue(textareaValueState);
+  // const inputValue = useRecoilValue(inputValueState);
+  // const textareaValue = useRecoilValue(textareaValueState);
   const time = useRecoilValue(timeState);
 
-  const memberId = 2;
+  const resInput = useRecoilValue(ResInputState);
+  const resTextarea = useRecoilValue(ResTextareaState);
+  const resMemberId = useRecoilValue(ResMemberId);
+
   useEffect(() => {
     axios
-      .get(`http://api.headfirst.p-e.kr/api/story/search/${memberId}`, {
+      .get(`http://api.headfirst.p-e.kr/api/story/search/${resMemberId}`, {
         headers: {
+          'Content-type': 'application/json',
           Authorization: `Bearer ${getCookie('accessToken')}`,
         },
       })
@@ -38,8 +45,8 @@ const AllCreateStoryContent: NextPage = () => {
           className="mt-[19px] border-b w-[360px] cursor-pointer"
           onClick={() => router.push('/storyDetail')}
         >
-          <div className="font-StoryFont ml-[22px]">{inputValue}</div>
-          <div className="text-allCreateStoryContentFont mt-[11px] ml-[22px]">{textareaValue}</div>
+          <div className="font-StoryFont ml-[22px]">{resInput}</div>
+          <div className="text-allCreateStoryContentFont mt-[11px] ml-[22px]">{resTextarea}</div>
           <div className="mt-[21px] text-allCreateStoryContentDate text-xs ml-[276px] mb-[13px]">
             {time}
           </div>

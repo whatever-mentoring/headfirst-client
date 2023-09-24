@@ -54,3 +54,25 @@ export const keywordState = atom({
   key: 'keywordState',
   default: '',
 });
+
+
+export const tokenState = atom({
+  key: 'tokenState',
+  default: '',
+});
+
+export const ResInputState = atom({
+  key: 'ResInputState',
+  default: '',
+});
+
+export const ResTextareaState = atom({
+  key: 'ResTextareaState',
+  default: '',
+});
+
+export const ResMemberId = atom({
+  key: 'ResMemberId',
+  default: 0,
+});
+
