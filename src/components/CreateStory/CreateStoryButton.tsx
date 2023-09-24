@@ -4,12 +4,14 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { createStoryModalState, timeState } from '@/states/createStoryState';
 import { inputValueState, textareaValueState } from '@/states/createStoryState';
 import axios from 'axios';
+// import { keywordState } from '@/states/createStoryState';
 
 const CreateStoryButton: NextPage = () => {
   const [modal, setModal] = useRecoilState(createStoryModalState);
   const inputValue = useRecoilValue(inputValueState);
   const textareaValue = useRecoilValue(textareaValueState);
   const setTime = useSetRecoilState(timeState);
+  // const [keyword, setKeyword] = useRecoilState(keywordState);
 
   const modalHandle = async () => {
     setModal(true);
@@ -35,9 +37,9 @@ const CreateStoryButton: NextPage = () => {
         'http://api.headfirst.p-e.kr/api/story/register',
         requestData,
         {
-          headers: {
-            Authorization: 'Bearer 토큰값',
-          },
+          // headers: {
+          //   Authorization: `Bearer ${cookieToken}`,
+          // },
         },
       );
 
