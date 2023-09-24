@@ -1,14 +1,13 @@
 import type { AppProps } from 'next/app';
 import '@/styles/globals.css';
-import { SessionProvider } from 'next-auth/react';
 import { RecoilRoot } from 'recoil';
+import Script from 'next/script';
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      <SessionProvider>
-        <Component {...pageProps} />
-      </SessionProvider>
+      <Component {...pageProps} />
+      <Script src="https://developers.kakao.com/sdk/js/kakao.js" />
     </RecoilRoot>
   );
 }
