@@ -9,7 +9,6 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { ResInputState, ResTextareaState } from '@/states/createStoryState';
 
-
 const AllCreateStoryContent: NextPage = () => {
   const router = useRouter();
 

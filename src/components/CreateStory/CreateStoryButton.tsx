@@ -14,7 +14,6 @@ import axios from 'axios';
 
 import { getCookie } from 'cookies-next';
 
-
 // import { keywordState } from '@/states/createStoryState';
 
 const CreateStoryButton: NextPage = () => {
@@ -25,7 +24,6 @@ const CreateStoryButton: NextPage = () => {
   const setResInput = useSetRecoilState(ResInputState);
   const setResTextarea = useSetRecoilState(ResTextareaState);
   const setResMemberId = useSetRecoilState(ResMemberId);
-
 
   const modalHandle = async () => {
     setModal(true);
@@ -51,7 +49,6 @@ const CreateStoryButton: NextPage = () => {
         'http://api.headfirst.p-e.kr/api/story/register',
         requestData,
         {
-
           headers: {
             Authorization: `Bearer ${getCookie('accessToken')}`,
           },

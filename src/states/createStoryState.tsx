@@ -55,7 +55,6 @@ export const keywordState = atom({
   default: '',
 });
 
-
 export const tokenState = atom({
   key: 'tokenState',
   default: '',
@@ -75,4 +74,3 @@ export const ResMemberId = atom({
   key: 'ResMemberId',
   default: 0,
 });
-
