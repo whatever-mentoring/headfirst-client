@@ -1,6 +1,8 @@
 import type { NextPage } from 'next';
 import CreateStoryModal from './createStoryModal';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
+import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+
 import {
   ResInputState,
   ResTextareaState,
@@ -25,6 +27,8 @@ const CreateStoryButton: NextPage = () => {
   const setResTextarea = useSetRecoilState(ResTextareaState);
   const setResMemberId = useSetRecoilState(ResMemberId);
 
+  const title = useRecoilValue(AddStoryMarkerTitle);
+
   const modalHandle = async () => {
     setModal(true);
     const now = new Date();
@@ -38,7 +42,7 @@ const CreateStoryButton: NextPage = () => {
     const requestData = {
       title: inputValue,
       content: textareaValue,
-      keyword: '강남역',
+      keyword: title,
       longitude: '36.123243522',
       latitude: '125.32543211',
     };

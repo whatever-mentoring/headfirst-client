@@ -81,6 +81,7 @@ export default function PracticeKakaoMap({
       lng: marker.getPosition().getLng(),
     };
     setMarkerPosition(newPosition);
+    console.log(markerPosition);
     setNewStoryMarkerPosition((prevPositions) => [...prevPositions, newPosition]);
     console.log('NewStory 마커 위치 :', newStoryMarkerPosition);
   };

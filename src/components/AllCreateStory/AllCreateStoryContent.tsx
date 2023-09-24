@@ -1,35 +1,43 @@
 'use client';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
 
-import { ResMemberId, timeState } from '@/states/createStoryState';
+import { storyIdState } from '@/states/createStoryState';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { ResInputState, ResTextareaState } from '@/states/createStoryState';
 
-const AllCreateStoryContent: NextPage = () => {
-  const router = useRouter();
+import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+import { keywordAllDataState } from '@/states/createStoryState';
+import InputTextarea from './InputTextarea';
 
-  // const inputValue = useRecoilValue(inputValueState);
-  // const textareaValue = useRecoilValue(textareaValueState);
-  const time = useRecoilValue(timeState);
+const AllCreateStoryContent: NextPage = (): any => {
+  // const setTime = useRecoilValue(timeState);
+  const setStoryId = useSetRecoilState(storyIdState);
 
-  const resInput = useRecoilValue(ResInputState);
-  const resTextarea = useRecoilValue(ResTextareaState);
-  const resMemberId = useRecoilValue(ResMemberId);
+  const setInput = useSetRecoilState(ResInputState);
+  const setTextarea = useSetRecoilState(ResTextareaState);
+
+  const [keywordAllData, setKeywordAllData] = useRecoilState(keywordAllDataState);
+
+  const title = useRecoilValue(AddStoryMarkerTitle);
 
   useEffect(() => {
     axios
-      .get(`http://api.headfirst.p-e.kr/api/story/search/${resMemberId}`, {
+      .get(`http://api.headfirst.p-e.kr/api/story/search?keyword=${title}`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${getCookie('accessToken')}`,
         },
       })
       .then((response) => {
-        console.log('서버 응답 데이터 :', response.data);
+        console.log('키워드 서버 응답 데이터 :', response.data.data);
+        setKeywordAllData(response.data.data);
+        setStoryId(response.data.data.id);
+        setInput(response.data.data.title);
+        setTextarea(response.data.data.content);
+        // setTime(response.data.data.created_at);
       })
       .catch((error) => {
         console.log('오류 ...', error);
@@ -38,19 +46,16 @@ const AllCreateStoryContent: NextPage = () => {
 
   return (
     <>
-      <div>
-        <div className="border-t w-[360px] mt-[15px]"></div>
-        <div
-          className="mt-[19px] border-b w-[360px] cursor-pointer"
-          onClick={() => router.push('/storyDetail')}
-        >
-          <div className="font-StoryFont ml-[22px]">{resInput}</div>
-          <div className="text-allCreateStoryContentFont mt-[11px] ml-[22px]">{resTextarea}</div>
-          <div className="mt-[21px] text-allCreateStoryContentDate text-xs ml-[276px] mb-[13px]">
-            {time}
-          </div>
-        </div>
-      </div>
+      <div className="border-t w-[360px] mt-[15px]"></div>
+      {keywordAllData.map((data, index) => (
+        <InputTextarea
+          key={index}
+          resInput={data.title}
+          resTextarea={data.content}
+          time={data.created_at}
+          storyId={data.id}
+        />
+      ))}
     </>
   );
 };

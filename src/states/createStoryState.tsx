@@ -74,3 +74,33 @@ export const ResMemberId = atom({
   key: 'ResMemberId',
   default: 0,
 });
+
+export const keywordAllDataState = atom({
+  key: 'keywordAllDataState',
+  default: [],
+});
+
+export const storyIdState = atom({
+  key: 'storyIdState',
+  default: 0,
+});
+
+export const idState = atom({
+  key: 'idState',
+  default: 0,
+});
+
+export const detailStoryTitleState = atom({
+  key: 'detailStoryTitleState',
+  default: '',
+});
+
+export const detailStoryContentState = atom({
+  key: 'detailStoryContentState',
+  default: '',
+});
+
+export const storyIdValueState = atom({
+  key: 'storyIdValueState',
+  default: 0,
+});
