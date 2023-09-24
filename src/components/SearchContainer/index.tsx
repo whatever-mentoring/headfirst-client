@@ -71,8 +71,8 @@ const SearchContainer = () => {
   };
 
   const [selectedPlaceName, setSelectedPlaceName] = useRecoilState<string>(SearchAtom);
-  const [selectedPlaceX, setSelectedPlaceX] = useRecoilState<number[]>(SearchXAtom);
-  const [selectedPlaceY, setSelectedPlaceY] = useRecoilState<number[]>(SearchYAtom);
+  const [selectedPlaceX, setSelectedPlaceX] = useRecoilState<number>(SearchXAtom);
+  const [selectedPlaceY, setSelectedPlaceY] = useRecoilState<number>(SearchYAtom);
 
   console.log('검색한 장소 이름 : ', selectedPlaceName);
   console.log('검색한 장소 X 좌표 : ', selectedPlaceX);
@@ -80,8 +80,8 @@ const SearchContainer = () => {
 
   const handleSearchItemClick = (placeName: string, x: number, y: number) => {
     setSelectedPlaceName(placeName);
-    setSelectedPlaceX([x]);
-    setSelectedPlaceY([y]);
+    setSelectedPlaceX(x);
+    setSelectedPlaceY(y);
     console.log('클릭 완료');
   };
 
@@ -119,8 +119,8 @@ const SearchContainer = () => {
               address_name={place.address_name}
               onClick={() => {
                 handleSearchItemClick(place.place_name, place.x, place.y);
-                // console.log(place);
-                router.push('/main');
+                console.log(place);
+                router.push('/practice');
               }}
             />
           </li>

@@ -11,7 +11,7 @@ export default function KakaoButton() {
       }&response_type=code
 `}
     >
-      <Image src="/assets/kakao_login_button.png" alt="kakao-login" width={258.048} height={56} />
+      <Image src="/assets/kakao-login-button.png" alt="kakao-login" width={258.048} height={56} />
     </Link>
   );
 }

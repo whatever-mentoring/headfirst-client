@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { postLogin, getToken } from '../../api/login';
 import { setCookie } from 'cookies-next';
 
-const Redirect = () => {
+const Redirect = (): null => {
   const router = useRouter();
 
   const getAuth = async (code: string) => {
@@ -11,15 +11,9 @@ const Redirect = () => {
       data: { access_token },
     } = await getToken(code);
 
-    console.log('access_token', access_token);
-
-    // const [token, setToken] = useRecoilState(tokenState);
-    // setToken(access_token);
-    // console.log('토큰 값을 알려주는 스테이트', token);
-
     const { data } = await postLogin(access_token);
 
-    setCookie('accessToken', data.accessToken);
+    setCookie('accessToken', data.access_token);
     router.push('/main');
   };
 

@@ -46,14 +46,14 @@ const Main: NextPage = () => {
       <main className="w-[360px] h-screen absolute">
         <header className="fixed top-[29.61px] z-10 flex items-center justify-center gap-[8.51px]">
           <MainSearchBar />
-          <ProfileButton />
+          <ProfileButton width={50} height={50} />
         </header>
         <KakaoMap openNewStoryModal={openNewStoryModal} openAddStoryModal={openAddStoryModal} />
         <div className="flex items-center justify-center">
           {isAddStoryModalVisible && (
             <AddStoryModal
-              title="AddStoryModal"
-              subtitle="AddStoryModal입니다"
+              // title="AddStoryModal"
+              // subtitle="AddStoryModal입니다"
               onCloseClick={closeAddStoryModal}
             />
           )}
