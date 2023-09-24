@@ -2,12 +2,9 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { postLogin, getToken } from '../../api/login';
 import { setCookie } from 'cookies-next';
-// import { useRecoilState } from 'recoil';
-// import { tokenState } from '@/states/createStoryState';
 
 const Redirect = () => {
   const router = useRouter();
-  // const [cookieToken, setCookieToken] = useRecoilState(tokenState);
 
   const getAuth = async (code: string) => {
     const {
@@ -15,8 +12,6 @@ const Redirect = () => {
     } = await getToken(code);
 
     console.log('access_token', access_token);
-    // setCookieToken(access_token);
-    // console.log('cookieToken', cookieToken);
 
     // const [token, setToken] = useRecoilState(tokenState);
     // setToken(access_token);

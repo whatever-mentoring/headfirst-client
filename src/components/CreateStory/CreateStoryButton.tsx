@@ -4,7 +4,6 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { createStoryModalState, timeState } from '@/states/createStoryState';
 import { inputValueState, textareaValueState } from '@/states/createStoryState';
 import axios from 'axios';
-import { getCookie } from 'cookies-next';
 // import { keywordState } from '@/states/createStoryState';
 
 const CreateStoryButton: NextPage = () => {
@@ -38,9 +37,9 @@ const CreateStoryButton: NextPage = () => {
         'http://api.headfirst.p-e.kr/api/story/register',
         requestData,
         {
-          headers: {
-            Authorization: `Bearer ${getCookie('accessToken')}`,
-          },
+          // headers: {
+          //   Authorization: `Bearer ${cookieToken}`,
+          // },
         },
       );
 
