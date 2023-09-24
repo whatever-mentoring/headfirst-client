@@ -11,11 +11,9 @@ const Redirect = (): null => {
       data: { access_token },
     } = await getToken(code);
 
-    console.log('access_token', access_token);
-
     const { data } = await postLogin(access_token);
 
-    setCookie('accessToken', data.accessToken);
+    setCookie('accessToken', data.access_token);
     router.push('/main');
   };
 
