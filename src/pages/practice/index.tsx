@@ -4,61 +4,37 @@ import { useState } from 'react';
 import NewStoryModal from '@/components/NewStoryModal';
 import SignInModal from '@/components/SignInModal';
 
+type ModalTypes = 'addStory' | 'newStory' | 'signIn';
+
 const Practice = () => {
-  const [isAddStoryModalVisible, setIsAddStoryModalVisible] = useState(false);
+  // 모달창 관리
+  const [activeModal, setActiveModal] = useState(null);
 
-  const openAddStoryModal = () => {
-    setIsAddStoryModalVisible(true);
+  const openModal = (modalType: ModalTypes) => {
+    setActiveModal(modalType);
   };
 
-  const closeAddStoryModal = () => {
-    setIsAddStoryModalVisible(false);
+  const closeModal = () => {
+    setActiveModal(null);
   };
 
-  // NewStoryModal
-  const [isNewStoryModalVisible, setIsNewStoryModalVisible] = useState(false);
-
-  const openNewStoryModal = () => {
-    setIsNewStoryModalVisible(true);
-  };
-
-  const closeNewStoryModal = () => {
-    setIsNewStoryModalVisible(false);
-  };
-
-  // SignInModal
-  const [isSignInModalVisible, setIsSignInModalVisible] = useState(false);
-
-  // const openAddStoryModal = () => {
-  //   setIsAddStoryModalVisible(true);
-  // };
-
-  const closeSignInModal = () => {
-    setIsSignInModalVisible(false);
-  };
   return (
     <div className="flex h-screen items-center justify-center bg-red-200">
       <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
         <PracticeKakaoMap
-          openNewStoryModal={openNewStoryModal}
-          openAddStoryModal={openAddStoryModal}
+          openNewStoryModal={() => openModal('newStory')}
+          openAddStoryModal={() => openModal('addStory')}
         />
         <div className="flex items-center justify-center">
-          {isAddStoryModalVisible && (
-            <AddStoryModal
-              title="AddStoryModal"
-              subtitle="AddStoryModal입니다"
-              onCloseClick={closeAddStoryModal}
-            />
-          )}
-          {isNewStoryModalVisible && (
+          {activeModal === 'addStory' && <AddStoryModal onCloseClick={closeModal} />}
+          {activeModal === 'newStory' && (
             <NewStoryModal
               title="NewStoryModal"
               subtitle="NewStoryModal입니다"
-              onCloseClick={closeNewStoryModal}
+              onCloseClick={closeModal}
             />
           )}
-          {isSignInModalVisible && <SignInModal onCloseClick={closeSignInModal} />}
+          {activeModal === 'signIn' && <SignInModal onCloseClick={closeModal} />}
         </div>
       </div>
     </div>
