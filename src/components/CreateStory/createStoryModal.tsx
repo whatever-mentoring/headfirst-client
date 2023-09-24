@@ -22,7 +22,7 @@ const CreateStoryModal: NextPage = () => {
             alt="modalDone"
             onClick={() => {
               setModal(false);
-              router.push('/allCreateStory');
+              router.push('/main');
             }}
           ></Image>
           <div className="font-bold w-[113px] h-[24px] mt-[3.97px] ml-[91px] text-xl">

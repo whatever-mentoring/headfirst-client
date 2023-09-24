@@ -5,23 +5,60 @@ import StoryDeleteCheck from '@/components/StoryDetail/StoryDeleteCheck';
 
 import { useRecoilState, useRecoilValue } from 'recoil';
 import {
-  inputValueState,
-  textareaValueState,
+  // inputValueState,
+  // textareaValueState,
   heartCountState,
   storyDeleteCheckState,
+  detailStoryTitleState,
+  detailStoryContentState,
+  storyIdValueState,
 } from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailHeart from '@/../public/assets/storyDetailHeart.svg';
 import storyDetailOptionBtn from '@/../public/assets/storyDetailOptionBtn.svg';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { getCookie } from 'cookies-next';
+// import { useRouter } from 'next/router';
 
 const StoryDetailContent: NextPage = () => {
-  const inputValue = useRecoilValue(inputValueState);
-  const textareaValue = useRecoilValue(textareaValueState);
+  // const router = useRouter();
+  // const inputValue = useRecoilValue(inputValueState);
+  // const textareaValue = useRecoilValue(textareaValueState);
+  // const [resInput, setInput] = useRecoilState(ResInputState);
+  // const [resTextarea, setTextarea] = useRecoilState(ResTextareaState);
+  // const [storyId, setStoryId] = useRecoilState(storyIdState);
 
   const [heartCount, setHearCount] = useRecoilState(heartCountState);
   const [storyDeleteCheck, setStoryDeleteCheck] = useRecoilState(storyDeleteCheckState);
+  // const [keywordAllData, setKeywordAllData] = useRecoilState(keywordAllDataState);
+
   // const handleSotryDelete = () => {};
+  const [detailStoryTitle, setDetailStoryTitle] = useRecoilState(detailStoryTitleState);
+  const [detailStoryContent, setDetailStoryContent] = useRecoilState(detailStoryContentState);
+  const storyIdValue = useRecoilValue(storyIdValueState);
+  console.log('storyIdValue><', storyIdValue);
+
+  useEffect(() => {
+    axios
+      .get(`http://api.headfirst.p-e.kr/api/story/search/${storyIdValue}`, {
+        headers: {
+          'Content-type': 'application/json',
+          Authorization: `Bearer ${getCookie('accessToken')}`,
+        },
+      })
+      .then((response) => {
+        console.log('스토리id 서버 응답 데이터 :', response.data.data);
+        setDetailStoryTitle(response.data.data[0].title);
+        console.log(detailStoryTitle);
+        setDetailStoryContent(response.data.data[0].content);
+        console.log(detailStoryContent);
+      })
+      .catch((error) => {
+        console.log('스토리id 오류 ...', error);
+      });
+  }, []);
   return (
     <>
       <div className="">
@@ -41,12 +78,12 @@ const StoryDetailContent: NextPage = () => {
                 }}
               ></Image>
             </p>
-            <div className="mt-[32px] font-[StoryFont]">{inputValue}</div>
+            <div className="mt-[32px] font-[StoryFont]">{detailStoryTitle}</div>
             {storyDeleteCheck === true ? <StoryDeleteCheck /> : null}
           </div>
 
           <div className="text-allCreateStoryContentFont bg-createStoryContentBg w-[254px] h-[221px] mt-[119px] ml-[24px] text-createStoryContentColor pl-[20px] pt-[24px] rounded-[8px]">
-            {textareaValue}
+            {detailStoryContent}
           </div>
 
           <div className="border-soid border-[1.5px] border-[#ECEDF0] mt-[9.64px] rounded-[16.68px] flex ml-[24px] w-[63px] h-[34.46px]">
