@@ -84,7 +84,7 @@ export default function OnboardingSwiper() {
               ) : (
                 <div className="flex flex-col justify-center items-center">
                   <div className="w-[192px] h-[87px] flex flex-col justify-center items-center mb-[73px]">
-                    <div className="text-4xl font-extrabold text-[#EF6262]">서비스 이름</div>
+                    <div className="text-4xl font-extrabold text-[#EF6262]">사서함 1호</div>
                     <div className="text-base font-medium text-[#EF6262]">
                       위치 기반 소통 창구 모시기
                     </div>
@@ -92,8 +92,8 @@ export default function OnboardingSwiper() {
                   <Image
                     alt="logo"
                     src="/assets/logo.svg"
-                    width={180}
-                    height={30}
+                    width={360}
+                    height={306}
                     className="mb-[72px]"
                   />
                   <KakaoButton />
