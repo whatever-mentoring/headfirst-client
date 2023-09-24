@@ -7,7 +7,6 @@ import { inputValueState, textareaValueState } from '@/states/createStoryState';
 const CreateStoryContent: NextPage = () => {
   // const token = getCookie('accessToken');
   // console.log('token????', token);
-
   const [inputValue, setInputValue] = useRecoilState(inputValueState);
   const [textareaValue, setTextareaValue] = useRecoilState(textareaValueState);
 
