@@ -52,8 +52,8 @@ const Main: NextPage = () => {
         <div className="flex items-center justify-center">
           {isAddStoryModalVisible && (
             <AddStoryModal
-              title="AddStoryModal"
-              subtitle="AddStoryModal입니다"
+              // title="AddStoryModal"
+              // subtitle="AddStoryModal입니다"
               onCloseClick={closeAddStoryModal}
             />
           )}

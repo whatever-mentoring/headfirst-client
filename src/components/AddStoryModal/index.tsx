@@ -1,10 +1,19 @@
+import { AddStoryMarkerAtom } from '@/recoil/AddStoryMarkerAtom';
+import { useRecoilValue } from 'recoil';
+import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+
 interface AddStoryModalProps {
-  title: string;
-  subtitle: string;
+  // title: string;
+  // subtitle: string;
   onCloseClick: () => void;
 }
 
-export default function AddStoryModal({ title, subtitle, onCloseClick }: AddStoryModalProps) {
+export default function AddStoryModal({ onCloseClick }: AddStoryModalProps) {
+  const title = useRecoilValue(AddStoryMarkerTitle);
+  const data = useRecoilValue(AddStoryMarkerAtom);
+  console.log('모달 title', title);
+  const subtitle = String(data[1]);
+
   return (
     <div className="w-[312px] h-[266px] fixed bottom-[29.61px] z-10 flex items-end justify-center flex-col">
       <div

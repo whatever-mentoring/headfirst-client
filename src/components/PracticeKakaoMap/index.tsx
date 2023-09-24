@@ -10,6 +10,10 @@ import { useRecoilValue } from 'recoil';
 import { SearchXAtom } from '@/recoil/SearchXAtom';
 import { SearchYAtom } from '@/recoil/SearchYAtom';
 import { useState, useEffect } from 'react';
+import { useRecoilState } from 'recoil';
+import { NewStoryMarkerAtom } from '@/recoil/NewStoryMarkerAtom';
+import { AddStoryMarkerAtom } from '@/recoil/AddStoryMarkerAtom';
+import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
 
 interface PracticeKakaoMapProps {
   openNewStoryModal: () => void;
@@ -67,6 +71,30 @@ export default function PracticeKakaoMap({
   //   const center = userLocation || temporaryLocation.latlng;
   const center = temporaryLocation.latlng;
 
+  // NewStory 마커
+  const [markerPosition, setMarkerPosition] = useState(center);
+  const [newStoryMarkerPosition, setNewStoryMarkerPosition] = useRecoilState(NewStoryMarkerAtom);
+  const onMarkerDragEnd = (marker: any) => {
+    // 마커의 새로운 위치를 상태 변수에 업데이트
+    const newPosition = {
+      lat: marker.getPosition().getLat(),
+      lng: marker.getPosition().getLng(),
+    };
+    setMarkerPosition(newPosition);
+    setNewStoryMarkerPosition((prevPositions) => [...prevPositions, newPosition]);
+    console.log('NewStory 마커 위치 :', newStoryMarkerPosition);
+  };
+
+  // AddStory 마커
+  const [addStoryMarkerTitle, setAddStoryMarkerTitle] = useRecoilState(AddStoryMarkerTitle);
+  const [addStoryMarkerPosition, setAddStoryMarkerPosition] = useRecoilState(AddStoryMarkerAtom);
+  const onAddStoryMarkerClick = (loc: any) => {
+    setAddStoryMarkerPosition(loc);
+    setAddStoryMarkerTitle(loc.title);
+    console.log('addStory 마커 제목', addStoryMarkerTitle);
+    console.log('addStory 마커', addStoryMarkerPosition);
+  };
+
   return (
     <Map // 지도를 표시할 Container
       id="map"
@@ -79,6 +107,7 @@ export default function PracticeKakaoMap({
       level={3} // 지도의 확대 레벨
     >
       <CustomOverlayMap position={center}>
+        {/* AddStory 마커 */}
         {locations.map((loc) => (
           <MapMarker
             key={`${loc.title}-${loc.latlng.lat}-${loc.latlng.lng}`}
@@ -88,18 +117,22 @@ export default function PracticeKakaoMap({
               size: { width: 50, height: 50 },
             }}
             title={loc.title}
-            onClick={openAddStoryModal}
+            onClick={() => {
+              onAddStoryMarkerClick(loc);
+              openAddStoryModal();
+            }}
           />
         ))}
-        {/* 현재 위치 좌표 */}
+        {/* NewStory 마커 */}
         <MapMarker
-          position={center}
+          position={markerPosition}
           image={{
             src: '/assets/current-marker.svg',
             size: { width: 36, height: 44 },
           }}
           onClick={openNewStoryModal}
           draggable={true}
+          onDragEnd={onMarkerDragEnd}
         />
       </CustomOverlayMap>
     </Map>
