@@ -6,7 +6,6 @@ import Image from 'next/image';
 import contentPost from '@/../public/assets/contentPost.svg';
 import { useRecoilState } from 'recoil';
 import { commentState } from '@/states/createStoryState';
-import { useEffect } from 'react';
 
 // import { dataCommentState } from '@/states/createStoryState';
 
@@ -18,31 +17,21 @@ const Content: NextPage = () => {
   const handleCommentText = (event: {
     target: { value: string | ((currVal: string) => string) };
   }) => {
-    setComment(event.target.value);
+    setComment([event.target.value]);
   };
 
   const handleCommentSend = () => {
-    console.log('comment???><', comment);
-    fetch('/api/comment/{id}', {
-      method: 'POST',
-      body: JSON.stringify({ content: comment }),
-    });
+    // 여기서 새로운 댓글을 추가하고 상태를 업데이트합니다.
+    const newComment = `${comment}`; // 이 부분을 실제로 입력한 댓글로 대체해야 합니다.
+    setComment([...comment, newComment]);
   };
-
-  useEffect(() => {
-    fetch('/api/comment/{id}')
-      // .then((r) => r.json())
-      .then((result) => {
-        console.log('result?????', result);
-        // setDataComment(result);
-        // console.log('dataComment????', dataComment);
-      });
-  }, []);
 
   return (
     <>
       <div className="w-[350px] h-[407px] bg-indigo0-10 ml-[7.5px] overflow-scroll">
-        <CommentText />
+        {comment.map((a, index) => (
+          <CommentText key={index} comment={a} />
+        ))}
       </div>
       <div className="flex shadow-2xl w-[325px] h-[48px] ml-[20px] rounded-lg">
         <input type="checkbox" className="w-[24px] h-[24px] ml-[28px] mt-[14px]" />{' '}

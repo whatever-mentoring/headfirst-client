@@ -2,9 +2,12 @@
 import type { NextPage } from 'next';
 import { useRecoilState } from 'recoil';
 import { inputValueState, textareaValueState } from '@/states/createStoryState';
+import { getCookie } from 'cookies-next';
 
 const CreateStoryContent: NextPage = () => {
-  // const url = '/api/story/register';
+  const token = getCookie('accessToken');
+  console.log('token????', token);
+
   const [inputValue, setInputValue] = useRecoilState(inputValueState);
   const [textareaValue, setTextareaValue] = useRecoilState(textareaValueState);
 

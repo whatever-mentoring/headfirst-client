@@ -27,7 +27,7 @@ export const timeState = atom({
 
 export const commentState = atom({
   key: 'commentState',
-  default: '',
+  default: [],
 });
 
 export const dataCommentState = atom({
@@ -48,4 +48,9 @@ export const storyDeleteCheckState = atom({
 export const storyDeleteModalState = atom({
   key: 'storyDeleteModalState',
   default: false,
+});
+
+export const keywordState = atom({
+  key: 'keywordState',
+  default: '',
 });

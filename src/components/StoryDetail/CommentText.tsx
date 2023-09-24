@@ -1,7 +1,6 @@
 'use client';
-import type { NextPage } from 'next';
 
-import { commentState } from '@/states/createStoryState';
+// import { commentState } from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailOptionBtn from '@/../public/assets/storyDetailOptionBtn.svg';
@@ -11,8 +10,11 @@ import { commentHeartState } from '@/states/createStoryState';
 
 import { timeState } from '@/states/createStoryState';
 
-const CommentText: NextPage = () => {
-  const comment = useRecoilValue(commentState);
+interface CommentTextProps {
+  comment: any;
+}
+
+const CommentText: React.FC<CommentTextProps> = ({ comment }) => {
   const [commentHeart, setCommentHeart] = useRecoilState(commentHeartState);
   const time = useRecoilValue(timeState);
 

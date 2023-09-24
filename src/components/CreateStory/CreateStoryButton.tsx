@@ -4,12 +4,15 @@ import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { createStoryModalState, timeState } from '@/states/createStoryState';
 import { inputValueState, textareaValueState } from '@/states/createStoryState';
 import axios from 'axios';
+import { getCookie } from 'cookies-next';
+// import { keywordState } from '@/states/createStoryState';
 
 const CreateStoryButton: NextPage = () => {
   const [modal, setModal] = useRecoilState(createStoryModalState);
   const inputValue = useRecoilValue(inputValueState);
   const textareaValue = useRecoilValue(textareaValueState);
   const setTime = useSetRecoilState(timeState);
+  // const [keyword, setKeyword] = useRecoilState(keywordState);
 
   const modalHandle = async () => {
     setModal(true);
@@ -36,7 +39,7 @@ const CreateStoryButton: NextPage = () => {
         requestData,
         {
           headers: {
-            Authorization: 'Bearer 1Nnv7XmmzaV7nfIOnrhuonwDbMeiVNg2jVgd_zqzCinI2gAAAYrBcG9f',
+            Authorization: `Bearer ${getCookie('accessToken')}`,
           },
         },
       );
