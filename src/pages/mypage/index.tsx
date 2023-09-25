@@ -1,11 +1,20 @@
 import Header from '@/components/Header';
 import MyPageButton from '@/components/MyPageButton';
 import ProfileButton from '@/components/ProfileButton';
+import MyPageModal from '@/components/MyPageModal';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
+import ModalOverlay from '@/components/ModalOverlay';
 
 const MyPage = () => {
   const router = useRouter();
-
+  const [activeModal, setActiveModal] = useState(null);
+  const openModal = (modalType: any) => {
+    setActiveModal(modalType);
+  };
+  const closeModal = () => {
+    setActiveModal(null);
+  };
   return (
     <div className="flex h-screen items-center justify-center bg-red-200">
       <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
@@ -14,9 +23,30 @@ const MyPage = () => {
           <ProfileButton width={90} height={90} />
           <div className="text-2xl text-[#535353]">닉네임님</div>
         </div>
-        <MyPageButton buttonName="로그아웃" />
-        <MyPageButton buttonName="탈퇴하기" />
+        <MyPageButton buttonName="로그아웃" onPop={() => openModal('logout')} />
+        <MyPageButton buttonName="탈퇴하기" onPop={() => openModal('withdraw')} />
       </div>
+      {activeModal === 'logout' && (
+        <ModalOverlay show={true} onHideModal={closeModal}>
+          <MyPageModal
+            title="로그아웃"
+            subtitle="로그아웃 하시겠어요?"
+            button_name="로그아웃"
+            onCloseClick={closeModal}
+          />
+        </ModalOverlay>
+      )}
+
+      {activeModal === 'withdraw' && (
+        <ModalOverlay show={true} onHideModal={closeModal}>
+          <MyPageModal
+            title="탈퇴하기"
+            subtitle="회원 탈퇴를 진행하시겠어요?"
+            button_name="회원탈퇴"
+            onCloseClick={closeModal}
+          />
+        </ModalOverlay>
+      )}
     </div>
   );
 };
