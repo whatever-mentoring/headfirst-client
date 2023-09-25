@@ -12,10 +12,8 @@ import { SearchYAtom } from '@/recoil/SearchYAtom';
 import { useState, useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { NewStoryMarkerAtom } from '@/recoil/NewStoryMarkerAtom';
-import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
-import { AddStoryMarkerSub } from '@/recoil/AddStoryMarkerSub';
-import { NewStoryMarkerTitle } from '@/recoil/NewStoryMarkerTitle';
-import { NewStoryMarkerSub } from '@/recoil/NewStoryMarkerSub';
+import { StoryMarkerTitle } from '@/recoil/StoryMarkerTitle';
+import { StoryMarkerSub } from '@/recoil/StoryMarkerSub';
 
 interface KakaoMapProps {
   openNewStoryModal: () => void;
@@ -97,8 +95,8 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   };
 
   // 위도&경도 -> 주소
-  const [modalTitle, setModalTitle] = useRecoilState(NewStoryMarkerTitle);
-  const [modalSubtitle, setModalSubtitle] = useRecoilState(NewStoryMarkerSub);
+  const [modalTitle, setModalTitle] = useRecoilState(StoryMarkerTitle);
+  const [modalSubtitle, setModalSubtitle] = useRecoilState(StoryMarkerSub);
   function handleMarkerClick() {
     // 위치 정보 가져오기
     const geocoder = new kakao.maps.services.Geocoder();
@@ -118,13 +116,13 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   }
 
   // AddStory 마커
-  const [addStoryMarkerTitle, setAddStoryMarkerTitle] = useRecoilState(AddStoryMarkerTitle);
-  const [addStoryMarkerSub, setAddStoryMarkerSub] = useRecoilState(AddStoryMarkerSub);
+  // const [addStoryMarkerTitle, setAddStoryMarkerTitle] = useRecoilState(StoryMarkerTitle);
+  // const [addStoryMarkerSub, setAddStoryMarkerSub] = useRecoilState(StoryMarkerSub);
   const onAddStoryMarkerClick = (loc: any) => {
-    setAddStoryMarkerTitle(loc.title);
-    setAddStoryMarkerSub(loc.address_name);
-    console.log('addStory 마커 제목', addStoryMarkerTitle);
-    console.log('addStory 마커 주소', addStoryMarkerSub);
+    setModalTitle(loc.title);
+    setModalSubtitle(loc.address_name);
+    // console.log('addStory 마커 제목', addStoryMarkerTitle);
+    // console.log('addStory 마커 주소', addStoryMarkerSub);
   };
 
   return (

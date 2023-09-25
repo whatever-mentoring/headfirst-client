@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router';
 import { useRecoilValue } from 'recoil';
-import { NewStoryMarkerTitle } from '@/recoil/NewStoryMarkerTitle';
-import { NewStoryMarkerSub } from '@/recoil/NewStoryMarkerSub';
+import { StoryMarkerTitle } from '@/recoil/StoryMarkerTitle';
+import { StoryMarkerSub } from '@/recoil/StoryMarkerSub';
 interface NewStoryModalProps {
   // title: string;
   // subtitle: string;
@@ -10,8 +10,8 @@ interface NewStoryModalProps {
 
 export default function NewStoryModal({ onCloseClick }: NewStoryModalProps) {
   // Modal 데이터 관리 : title, subtitle
-  const title = useRecoilValue(NewStoryMarkerTitle);
-  const subtitle = useRecoilValue(NewStoryMarkerSub);
+  const title = useRecoilValue(StoryMarkerTitle);
+  const subtitle = useRecoilValue(StoryMarkerSub);
   const router = useRouter();
   return (
     <div className="w-[312px] h-[266px] fixed bottom-[29.61px] z-10 flex items-end justify-center flex-col">

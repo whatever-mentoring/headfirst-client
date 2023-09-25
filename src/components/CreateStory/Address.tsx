@@ -2,14 +2,12 @@ import type { NextPage } from 'next';
 import Image from 'next/image';
 import Icon from '@/../public/assets/Icon.svg';
 import { useRecoilValue } from 'recoil';
-import { NewStoryMarkerTitle } from '@/recoil/NewStoryMarkerTitle';
-import { NewStoryMarkerSub } from '@/recoil/NewStoryMarkerSub';
-import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
-import { AddStoryMarkerSub } from '@/recoil/AddStoryMarkerSub';
+import { StoryMarkerTitle } from '@/recoil/StoryMarkerTitle';
+import { StoryMarkerSub } from '@/recoil/StoryMarkerSub';
 
 const Address: NextPage = () => {
-  const title = useRecoilValue(NewStoryMarkerTitle || AddStoryMarkerTitle);
-  const sub = useRecoilValue(NewStoryMarkerSub || AddStoryMarkerSub);
+  const title = useRecoilValue(StoryMarkerTitle);
+  const sub = useRecoilValue(StoryMarkerSub);
   return (
     <div className="flex">
       <Image
