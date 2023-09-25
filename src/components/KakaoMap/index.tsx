@@ -100,7 +100,7 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   function handleMarkerClick() {
     // 위치 정보 가져오기
     const geocoder = new kakao.maps.services.Geocoder();
-    geocoder.coord2Address(markerPosition.lng, markerPosition.lat, function (result, status) {
+    geocoder.coord2Address(center.lng, center.lat, function (result, status) {
       if (status === kakao.maps.services.Status.OK) {
         const buildingName = result[0]?.road_address.building_name;
         const addressName = result[0]?.address.address_name;
