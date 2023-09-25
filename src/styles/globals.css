@@ -14,6 +14,10 @@ body {
   min-height: fill-available;
 }
 
+input{
+  outline: none;
+}
+
 /* ===== createStory font ====== */
 @font-face {
   font-family: 'SCDream6';

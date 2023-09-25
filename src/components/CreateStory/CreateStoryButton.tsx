@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import CreateStoryModal from './createStoryModal';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
 import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+import { useState } from 'react';
 
 import {
   ResInputState,
@@ -15,6 +16,7 @@ import {
 import axios from 'axios';
 
 import { getCookie } from 'cookies-next';
+import ModalOverlay from '../ModalOverlay';
 
 // import { keywordState } from '@/states/createStoryState';
 
@@ -70,6 +72,12 @@ const CreateStoryButton: NextPage = () => {
     }
   };
 
+  const [activeModal, setActiveModal] = useState(null);
+  console.log(activeModal);
+  const closeModal = () => {
+    setActiveModal(null);
+  };
+
   return (
     <>
       <div className="bg-createStoryBtn w-[250px] h-[50px] ml-[55px] mt-[46px] mb-[45px] rounded-full">
@@ -79,7 +87,11 @@ const CreateStoryButton: NextPage = () => {
         >
           사연 등록 완료
         </button>
-        {modal === true ? <CreateStoryModal /> : null}
+        {modal === true ? (
+          <ModalOverlay show={true} onHideModal={closeModal}>
+            <CreateStoryModal />
+          </ModalOverlay>
+        ) : null}
       </div>
     </>
   );
