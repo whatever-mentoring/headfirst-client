@@ -46,16 +46,17 @@ const AllCreateStoryContent: NextPage = (): any => {
 
   return (
     <>
-      <div className="border-t w-[360px] mt-[15px]"></div>
-      {keywordAllData.map((data, index) => (
-        <InputTextarea
-          key={index}
-          resInput={data.title}
-          resTextarea={data.content}
-          time={data.created_at}
-          storyId={data.id}
-        />
-      ))}
+      <div className="border-b w-[360px] h-screen">
+        {keywordAllData.map((data, index) => (
+          <InputTextarea
+            key={index}
+            resInput={data.title}
+            resTextarea={data.content}
+            time={data.created_at}
+            storyId={data.id}
+          />
+        ))}
+      </div>
     </>
   );
 };
