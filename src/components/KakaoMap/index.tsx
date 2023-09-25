@@ -42,8 +42,8 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
 
   // 1. 임시 위치 불러오기 : 임시 위치 데이터
   const temporaryLocation = {
-    title: '가천관',
-    latlng: { lat: 37.45014238433003, lng: 127.12972934051282 },
+    title: '당근 마켓',
+    latlng: { lat: 37.503755423867155, lng: 127.02410739090031 },
   };
 
   // 2. (현재 위치 파악 시)현재 위치 불러오기 : 성공
