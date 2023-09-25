@@ -86,7 +86,7 @@ export default function OnboardingSwiper() {
                   <div className="w-[192px] h-[87px] flex flex-col justify-center items-center mb-[73px]">
                     <div className="text-4xl font-extrabold text-[#EF6262]">사서함 1호</div>
                     <div className="text-base font-medium text-[#EF6262]">
-                      위치 기반 소통 창구 모시기
+                      장소 기반 사연 작성 서비스
                     </div>
                   </div>
                   <Image
