@@ -8,9 +8,9 @@ import Content from '@/components/StoryDetail/Content';
 
 const StoryDetail: NextPage = () => {
   return (
-    <div>
-      <div className="ml-[40%] w-[360px] h-[1024px] ">
-        <div className="w-[363px] h-[590px] bg-white">
+    <div className="flex h-screen items-center justify-center bg-red-200">
+      <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
+        <div className="w-[360px] bg-white">
           <Header />
           <Address />
           <StoryDetailContent />

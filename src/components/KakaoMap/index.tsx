@@ -104,15 +104,14 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   };
 
   return (
-    <Map // 지도를 표시할 Container
+    <Map
       id="map"
       center={center}
       style={{
-        // 지도의 크기
         width: '100%',
         height: '100%',
       }}
-      level={3} // 지도의 확대 레벨
+      level={4}
     >
       <CustomOverlayMap position={center}>
         {/* AddStory 마커 */}

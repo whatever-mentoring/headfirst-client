@@ -7,8 +7,8 @@ import Address from '@/components/CreateStory/Address';
 
 const createStory: NextPage = () => {
   return (
-    <div className="bg-pink-100 h-[850px] p-[25px]">
-      <div className="ml-[525px] w-[360px] h-[780px]">
+    <div className="flex h-screen items-center justify-center bg-red-200">
+      <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
         <Header />
         <div className="w-[360px] h-[720px] bg-white">
           <Address />

@@ -5,10 +5,12 @@ import AllCreateStoryContent from '@/components/AllCreateStory/AllCreateStoryCon
 
 const allCreateStory: NextPage = () => {
   return (
-    <div className="ml-[40%]">
-      <Header />
-      <Address />
-      <AllCreateStoryContent />
+    <div className="flex h-screen items-center justify-center bg-red-200">
+      <div className="flex w-[360px] h-screen mx-auto bg-white flex-col">
+        <Header />
+        <Address />
+        <AllCreateStoryContent />
+      </div>
     </div>
   );
 };

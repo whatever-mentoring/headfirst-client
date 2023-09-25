@@ -10,7 +10,7 @@ export default function ProfileButton({ width, height }: ProfileButtonProps) {
   return (
     <div
       style={{ width: `${width}px`, height: `${height}px` }}
-      className="rounded-full bg-[url('/assets/onboarding1.jpeg')] object-fill bg-center border-2 border-[#F34E4E] border-solid cursor-pointer"
+      className="rounded-full bg-[url('/assets/onboarding1.png')] object-fill bg-center border-2 border-[#F34E4E] border-solid cursor-pointer"
       onClick={() => router.push('/mypage')}
     />
   );
