@@ -33,13 +33,7 @@ const Main = () => {
         />
         <div className="flex items-center justify-center">
           {activeModal === 'addStory' && <AddStoryModal onCloseClick={closeModal} />}
-          {activeModal === 'newStory' && (
-            <NewStoryModal
-              title="NewStoryModal"
-              subtitle="NewStoryModal입니다"
-              onCloseClick={closeModal}
-            />
-          )}
+          {activeModal === 'newStory' && <NewStoryModal onCloseClick={closeModal} />}
           {activeModal === 'signIn' && <SignInModal onCloseClick={closeModal} />}
         </div>
       </div>
