@@ -6,8 +6,7 @@ module.exports = {
     return [
       {
         source: '/:path*',
-        // destination: 'http://localhost:3000/:path*',
-        destination: 'https://mailboxnumberone.vercel.app/:path*',
+        destination: 'http://localhost:3000/:path*',
       },
     ];
   },
