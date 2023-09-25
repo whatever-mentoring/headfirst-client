@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-
+import Image from 'next/image';
 interface ProfileButtonProps {
   width: number;
   height: number;
@@ -8,9 +8,12 @@ interface ProfileButtonProps {
 export default function ProfileButton({ width, height }: ProfileButtonProps) {
   const router = useRouter();
   return (
-    <div
-      style={{ width: `${width}px`, height: `${height}px` }}
-      className="rounded-full bg-[url('/assets/onboarding1.png')] object-fill bg-center border-2 border-[#F34E4E] border-solid cursor-pointer"
+    <Image
+      src="/assets/user-circle.svg"
+      alt="mypage"
+      className="bg-white rounded-[100%]"
+      width={width}
+      height={height}
       onClick={() => router.push('/mypage')}
     />
   );

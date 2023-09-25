@@ -33,6 +33,7 @@ const MyPage = () => {
             subtitle="로그아웃 하시겠어요?"
             button_name="로그아웃"
             onCloseClick={closeModal}
+            onMoveClick={() => router.push('/')}
           />
         </ModalOverlay>
       )}
@@ -44,6 +45,7 @@ const MyPage = () => {
             subtitle="회원 탈퇴를 진행하시겠어요?"
             button_name="회원탈퇴"
             onCloseClick={closeModal}
+            onMoveClick={() => router.push('/')}
           />
         </ModalOverlay>
       )}
