@@ -73,13 +73,13 @@ export default function OnboardingSwiper() {
                   >
                     {item.message}
                   </div>
-                  {/* <Image
-                    src={`/assets/onboarding${item.id}.jpeg`}
+                  <Image
+                    src={`/assets/onboarding${item.id}.png`}
                     width={240}
                     height={388}
                     alt="onboarding-img"
-                  /> */}
-                  <div className="w-[240px] h-[388px] bg-blue-200"></div>
+                  />
+                  {/* <div className="w-[240px] h-[388px] bg-blue-200"></div> */}
                 </>
               ) : (
                 <div className="flex flex-col justify-center items-center">
