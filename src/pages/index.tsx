@@ -24,10 +24,10 @@ const onboardingMessageList: OnboardingMessage[] = [
     id: 2,
     message: `장소를 선택하거나 검색어를 \n 입력해 여러분의 사연을 \n 작성해보세요!`,
   },
-  {
-    id: 3,
-    message: `다른 사연을 읽고 \n 답글을 남길 수도 있어요!`,
-  },
+  // {
+  //   id: 3,
+  //   message: `다른 사연을 읽고 \n 답글을 남길 수도 있어요!`,
+  // },
   {
     id: 4,
     message: '',
