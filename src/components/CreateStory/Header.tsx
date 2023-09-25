@@ -3,7 +3,7 @@ import type { NextPage } from 'next';
 import { useRouter } from 'next/navigation';
 
 import Image from 'next/image';
-import arrow_back from '../../../public/assets/arrow_back.svg';
+import arrow_back from '../../../public/assets/arrow-back.svg';
 
 const Header: NextPage = () => {
   const router = useRouter();
