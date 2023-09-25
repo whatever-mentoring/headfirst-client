@@ -1,6 +1,6 @@
-import { AddStoryMarkerAtom } from '@/recoil/AddStoryMarkerAtom';
 import { useRecoilValue } from 'recoil';
 import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+import { AddStoryMarkerSub } from '@/recoil/AddStoryMarkerSub';
 import { useRouter } from 'next/router';
 
 interface AddStoryModalProps {
@@ -10,11 +10,11 @@ interface AddStoryModalProps {
 }
 
 export default function AddStoryModal({ onCloseClick }: AddStoryModalProps) {
+  // Modal 데이터 관리 : title, subtitle
   const title = useRecoilValue(AddStoryMarkerTitle);
-  const data = useRecoilValue(AddStoryMarkerAtom);
-  console.log('모달 title', title);
-  const subtitle = String(data[1]);
+  const subtitle = useRecoilValue(AddStoryMarkerSub);
 
+  // 사연 전체보기
   const router = useRouter();
 
   const handleAllStory = () => {
