@@ -1,7 +1,7 @@
 /** 지도 위치 연습
  * 1. 임시 위치 불러오기 : 성공
  * 2. (현재 위치 파악 시)현재 위치 불러오기 : 성공
- * 3. 검색한 주소 위치 불러오기 : 실패
+ * 3. 검색한 주소 위치 불러오기 : 성공
  * 4. (현재 위치 클릭 시)현재 위치 불러오기
  * */
 
@@ -72,12 +72,12 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   const placeY = useRecoilValue<number>(SearchYAtom);
 
   // placeX와 placeY를 사용하여 latlng 객체 생성
-  const searchLocation = placeX && placeY ? { lat: Number(placeX), lng: Number(placeY) } : null;
+  const searchLocation = placeX && placeY ? { lat: Number(placeY), lng: Number(placeX) } : null;
   console.log('검색한 위치', searchLocation);
 
   // 임시 위치, 현재 위치, 또는 검색 위치를 사용하여 중심 좌표 설정
   const center = searchLocation || userLocation || temporaryLocation.latlng;
-
+  console.log('center:', center);
   // NewStory 마커
   const [markerPosition, setMarkerPosition] = useState(center);
   const [newStoryMarkerPosition, setNewStoryMarkerPosition] = useRecoilState(NewStoryMarkerAtom);
