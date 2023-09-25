@@ -14,6 +14,8 @@ import { useRecoilState } from 'recoil';
 import { NewStoryMarkerAtom } from '@/recoil/NewStoryMarkerAtom';
 import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
 import { AddStoryMarkerSub } from '@/recoil/AddStoryMarkerSub';
+import { NewStoryMarkerTitle } from '@/recoil/NewStoryMarkerTitle';
+import { NewStoryMarkerSub } from '@/recoil/NewStoryMarkerSub';
 
 interface KakaoMapProps {
   openNewStoryModal: () => void;
@@ -78,6 +80,7 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
   // 임시 위치, 현재 위치, 또는 검색 위치를 사용하여 중심 좌표 설정
   const center = searchLocation || userLocation || temporaryLocation.latlng;
   console.log('center:', center);
+
   // NewStory 마커
   const [markerPosition, setMarkerPosition] = useState(center);
   const [newStoryMarkerPosition, setNewStoryMarkerPosition] = useRecoilState(NewStoryMarkerAtom);
@@ -92,6 +95,27 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
     setNewStoryMarkerPosition((prevPositions) => [...prevPositions, newPosition]);
     console.log('NewStory 마커 위치 :', newStoryMarkerPosition);
   };
+
+  // 위도&경도 -> 주소
+  const [modalTitle, setModalTitle] = useRecoilState(NewStoryMarkerTitle);
+  const [modalSubtitle, setModalSubtitle] = useRecoilState(NewStoryMarkerSub);
+  function handleMarkerClick() {
+    // 위치 정보 가져오기
+    const geocoder = new kakao.maps.services.Geocoder();
+    geocoder.coord2Address(markerPosition.lng, markerPosition.lat, function (result, status) {
+      if (status === kakao.maps.services.Status.OK) {
+        const buildingName = result[0]?.road_address.building_name;
+        const addressName = result[0]?.address.address_name;
+        // 모달 제목과 부제목 설정
+        setModalTitle(buildingName);
+        setModalSubtitle(addressName);
+        console.log(modalTitle);
+        console.log(modalSubtitle);
+      } else {
+        console.error('주소 정보를 가져올 수 없습니다.');
+      }
+    });
+  }
 
   // AddStory 마커
   const [addStoryMarkerTitle, setAddStoryMarkerTitle] = useRecoilState(AddStoryMarkerTitle);
@@ -138,7 +162,10 @@ export default function KakaoMap({ openNewStoryModal, openAddStoryModal }: Kakao
             src: '/assets/current-marker.svg',
             size: { width: 36, height: 44 },
           }}
-          onClick={openNewStoryModal}
+          onClick={() => {
+            handleMarkerClick();
+            openNewStoryModal();
+          }}
           draggable={true}
           onDragEnd={onMarkerDragEnd}
         />
