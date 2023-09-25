@@ -61,29 +61,30 @@ export default function OnboardingSwiper() {
           slidesPerView={1}
           loop={false}
           pagination={{ clickable: true }}
-          navigation
+          // navigation
         >
           {onboardingMessageList.map((item) => (
             <SwiperSlide key={item.id}>
               {item.id !== 4 ? (
-                <>
+                <div className="flex flex-col items-center justify-center">
                   <div
-                    className="w-[288px] h-[145px] text-xl text-start"
+                    className="w-[288px] h-[85px] text-xl text-center mb-[20px]"
                     style={{ whiteSpace: 'pre-line' }}
                   >
                     {item.message}
                   </div>
                   <Image
                     src={`/assets/onboarding${item.id}.png`}
-                    width={240}
-                    height={388}
+                    width={180}
+                    height={100}
                     alt="onboarding-img"
+                    className="object-fit"
                   />
                   {/* <div className="w-[240px] h-[388px] bg-blue-200"></div> */}
-                </>
+                </div>
               ) : (
                 <div className="flex flex-col justify-center items-center">
-                  <div className="w-[192px] h-[87px] flex flex-col justify-center items-center mb-[73px]">
+                  <div className="w-[192px] h-[87px] flex flex-col justify-center items-center mb-[20px]">
                     <div className="text-4xl font-extrabold text-[#EF6262]">사서함 1호</div>
                     <div className="text-base font-medium text-[#EF6262]">
                       장소 기반 사연 작성 서비스
@@ -94,7 +95,7 @@ export default function OnboardingSwiper() {
                     src="/assets/logo.svg"
                     width={360}
                     height={306}
-                    className="mb-[72px]"
+                    className="mb-[50px]"
                   />
                   <KakaoButton />
                   <Link
