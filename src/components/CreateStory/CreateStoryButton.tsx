@@ -1,7 +1,6 @@
 import type { NextPage } from 'next';
 import CreateStoryModal from './createStoryModal';
 import { useRecoilState, useSetRecoilState, useRecoilValue } from 'recoil';
-import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
 import { useState } from 'react';
 
 import {
@@ -17,6 +16,7 @@ import axios from 'axios';
 
 import { getCookie } from 'cookies-next';
 import ModalOverlay from '../ModalOverlay';
+import { StoryMarkerTitle } from '@/recoil/StoryMarkerTitle';
 
 // import { keywordState } from '@/states/createStoryState';
 
@@ -28,8 +28,7 @@ const CreateStoryButton: NextPage = () => {
   const setResInput = useSetRecoilState(ResInputState);
   const setResTextarea = useSetRecoilState(ResTextareaState);
   const setResMemberId = useSetRecoilState(ResMemberId);
-
-  const title = useRecoilValue(AddStoryMarkerTitle);
+  const title = useRecoilValue(StoryMarkerTitle);
 
   const modalHandle = async () => {
     setModal(true);
