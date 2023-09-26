@@ -100,7 +100,7 @@ export const detailStoryContentState = atom({
   default: '',
 });
 
-export const storyIdValueState = atom({
-  key: 'storyIdValueState',
+export const storyidState = atom({
+  key: 'storyidState',
   default: 0,
 });

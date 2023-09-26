@@ -29,6 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@tanstack/react-query", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:4.35.0"],\
+            ["@types/lodash", "npm:4.14.199"],\
             ["@types/node", "npm:20.5.9"],\
             ["@types/prettier", "npm:3.0.0"],\
             ["@types/react", "npm:18.2.21"],\
@@ -45,6 +46,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:5.0.0"],\
             ["husky", "npm:8.0.3"],\
             ["lint-staged", "npm:14.0.1"],\
+            ["lodash", "npm:4.17.21"],\
             ["next", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:13.5.2"],\
             ["next-auth", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:4.23.1"],\
             ["postcss", "npm:8.4.29"],\
@@ -688,6 +690,15 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json5-npm-0.0.29-f63a7916bd-e60b153664.zip/node_modules/@types/json5/",\
           "packageDependencies": [\
             ["@types/json5", "npm:0.0.29"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["@types/lodash", [\
+        ["npm:4.14.199", {\
+          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.199-39fe418e7a-e68d1fcbbf.zip/node_modules/@types/lodash/",\
+          "packageDependencies": [\
+            ["@types/lodash", "npm:4.14.199"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -3334,6 +3345,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["headfirst-client", "workspace:."],\
             ["@tanstack/react-query", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:4.35.0"],\
+            ["@types/lodash", "npm:4.14.199"],\
             ["@types/node", "npm:20.5.9"],\
             ["@types/prettier", "npm:3.0.0"],\
             ["@types/react", "npm:18.2.21"],\
@@ -3350,6 +3362,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-plugin-prettier", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:5.0.0"],\
             ["husky", "npm:8.0.3"],\
             ["lint-staged", "npm:14.0.1"],\
+            ["lodash", "npm:4.17.21"],\
             ["next", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:13.5.2"],\
             ["next-auth", "virtual:8705ef6333099311ec4bd2d3130f53e7dd8bcf5d50c3feb0e98c856e27aa7a8a9a386f40849c102a640ae01ebf1a8228069951653d576b1b5f181049a65d37b3#npm:4.23.1"],\
             ["postcss", "npm:8.4.29"],\
