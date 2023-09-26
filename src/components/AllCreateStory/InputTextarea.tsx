@@ -29,6 +29,7 @@ const InputTextarea: React.FC<InputTextareaProps> = ({ resInput, resTextarea, ti
           console.log('각 데이터 별', response.data.data[`${index}`]);
           const val = response.data.data[`${index}`];
           console.log('id값을 콘솔에 찍었을 때 : ', val.id);
+          console.log('id값을 storyid에 저장했을 때 : ', storyid);
           setStoryid(val.id);
         });
       })
@@ -36,8 +37,6 @@ const InputTextarea: React.FC<InputTextareaProps> = ({ resInput, resTextarea, ti
         console.log('스토리id 오류 ...', error);
       });
   }, [resInput]);
-
-  console.log('id값을 storyid에 저장했을 때 : ', storyid);
 
   return (
     <>

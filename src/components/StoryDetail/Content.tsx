@@ -12,7 +12,6 @@ import { commentState } from '@/states/createStoryState';
 const Content: NextPage = () => {
   const [comment, setComment] = useRecoilState(commentState);
   // const [dataComment, setDataComment] = useRecoilState(dataCommentState);
-  console.log('comment???', comment);
 
   const handleCommentText = (event: {
     target: { value: string | ((currVal: string) => string) };

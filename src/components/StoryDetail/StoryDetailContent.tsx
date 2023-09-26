@@ -39,7 +39,7 @@ const StoryDetailContent: NextPage = () => {
   const [detailStoryContent, setDetailStoryContent] = useRecoilState(detailStoryContentState);
 
   const [storyid] = useRecoilState(storyidState);
-  console.log(storyid);
+  console.log('디데일 id !!', storyid);
 
   useEffect(() => {
     axios
@@ -50,18 +50,18 @@ const StoryDetailContent: NextPage = () => {
         },
       })
       .then((response) => {
-        response.data.data.forEach((item: any, index: any) => {
-          console.log('스토리id 서버 응답 데이터 :', response.data.data[`${index}`]);
-          setDetailStoryTitle(response.data.data[`${storyid}`].title);
-          setDetailStoryContent(response.data.data[`${storyid}`].content);
-          console.log(detailStoryTitle);
-          console.log(detailStoryContent);
-        });
+        // response.data.data.forEach((item: any, index: any) => {
+        console.log('스토리id 서버 응답 데이터 :', response.data.data);
+        console.log('제목: ', response.data.data[0].title);
+        setDetailStoryTitle(response.data.data[0].title);
+        console.log('내용: ', response.data.data[0].content);
+        setDetailStoryContent(response.data.data[0].content);
+        // });
       })
       .catch((error) => {
         console.log('스토리id 오류 ...', error);
       });
-  }, [detailStoryTitle]);
+  }, [detailStoryContent]);
 
   return (
     <>
