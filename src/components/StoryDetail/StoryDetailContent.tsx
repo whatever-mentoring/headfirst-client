@@ -3,7 +3,7 @@
 import type { NextPage } from 'next';
 import StoryDeleteCheck from '@/components/StoryDetail/StoryDeleteCheck';
 
-import { useRecoilState, useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import {
   // inputValueState,
   // textareaValueState,
@@ -11,8 +11,8 @@ import {
   storyDeleteCheckState,
   detailStoryTitleState,
   detailStoryContentState,
-  storyIdValueState,
 } from '@/states/createStoryState';
+import { storyidState } from '@/states/createStoryState';
 
 import Image from 'next/image';
 import storyDetailHeart from '@/../public/assets/storyDetailHeart.svg';
@@ -37,28 +37,32 @@ const StoryDetailContent: NextPage = () => {
   // const handleSotryDelete = () => {};
   const [detailStoryTitle, setDetailStoryTitle] = useRecoilState(detailStoryTitleState);
   const [detailStoryContent, setDetailStoryContent] = useRecoilState(detailStoryContentState);
-  const storyIdValue = useRecoilValue(storyIdValueState);
-  console.log('storyIdValue><', storyIdValue);
+
+  const [storyid] = useRecoilState(storyidState);
+  console.log(storyid);
 
   useEffect(() => {
     axios
-      .get(`http://api.headfirst.p-e.kr/api/story/search/${storyIdValue}`, {
+      .get(`http://api.headfirst.p-e.kr/api/story/search/${storyid}`, {
         headers: {
           'Content-type': 'application/json',
           Authorization: `Bearer ${getCookie('accessToken')}`,
         },
       })
       .then((response) => {
-        console.log('스토리id 서버 응답 데이터 :', response.data.data);
-        setDetailStoryTitle(response.data.data[0].title);
-        console.log(detailStoryTitle);
-        setDetailStoryContent(response.data.data[0].content);
-        console.log(detailStoryContent);
+        response.data.data.forEach((item: any, index: any) => {
+          console.log('스토리id 서버 응답 데이터 :', response.data.data[`${index}`]);
+          setDetailStoryTitle(response.data.data[`${storyid}`].title);
+          setDetailStoryContent(response.data.data[`${storyid}`].content);
+          console.log(detailStoryTitle);
+          console.log(detailStoryContent);
+        });
       })
       .catch((error) => {
         console.log('스토리id 오류 ...', error);
       });
-  }, []);
+  }, [detailStoryTitle]);
+
   return (
     <>
       <div className="">

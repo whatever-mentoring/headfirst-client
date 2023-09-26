@@ -8,7 +8,7 @@ import axios from 'axios';
 import { getCookie } from 'cookies-next';
 import { ResInputState, ResTextareaState } from '@/states/createStoryState';
 
-import { AddStoryMarkerTitle } from '@/recoil/AddStoryMarkerTitle';
+import { StoryMarkerTitle } from '@/recoil/StoryMarkerTitle';
 import { keywordAllDataState } from '@/states/createStoryState';
 import InputTextarea from './InputTextarea';
 
@@ -21,7 +21,8 @@ const AllCreateStoryContent: NextPage = (): any => {
 
   const [keywordAllData, setKeywordAllData] = useRecoilState(keywordAllDataState);
 
-  const title = useRecoilValue(AddStoryMarkerTitle);
+  const title = useRecoilValue(StoryMarkerTitle);
+  console.log(title);
 
   useEffect(() => {
     axios
@@ -32,7 +33,13 @@ const AllCreateStoryContent: NextPage = (): any => {
         },
       })
       .then((response) => {
-        console.log('키워드 서버 응답 데이터 :', response.data.data);
+        // response.data.data 배열의 각 요소에 인덱스 추가
+        response.data.data.forEach((item: any, index: any) => {
+          // console.log(`인덱스 ${index}: ${item.keyword}`);
+          // console.log('데이터 인덱스', response.data.data[`${index}`]);
+          console.log(response.data.data[`${index}`].keyword == `${title}`);
+        });
+        // console.log('키워드 서버 응답 데이터 :', response.data.data);
         setKeywordAllData(response.data.data);
         setStoryId(response.data.data.id);
         setInput(response.data.data.title);
